@@ -28,7 +28,7 @@
 														  <span style="font-family:'GothamHTF-Medium';font-size:16px;color:white">
 										United Arab Emirates
 									</span>
-									<br>Downtown, Dubai<br>Burj Khalifa<br>144<sup>th</sup>, 145<sup>th</sup> & 146<sup>th</sup> Floor
+									<br>Downtown, Dubai<br>Burj Khalifa<br>111<sup>th</sup>, 112<sup>th</sup> & 1113<sup>th</sup> Floor
 											</p>
 					<p style="margin-top:8px; margin-bottom: 10px;">
 															<span style="font-family:'GothamHTF-Medium';font-size:16px;color:white">Switzerland</span>
@@ -43,12 +43,6 @@
 						<a href="mailto:info@aixinvestment.com">info@aixinvestment.com</a>
 					</div>-->
 						
-<!-- 					<div class="each after-1024-hide" > -->
-					 <div class="each" >
-						<h3 style="margin-bottom:4px">Phone</h3>
-						<a class="footer-no" href="tel:97145460000">+971 4 546 0000</a>
-					</div>
-<!-- 					<div class="each after-1024-hide"> -->
 					<div class="each">
 						<h3 style="margin-bottom:4px">Social Media</h3>
 						<div class="menu-social-nav-container"><ul class="social-nav"><li id="menu-item-17" class="twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a title="Follow AIX group on Twitter" target="_blank" rel="noopener" href="https://twitter.com/AIXinvestment"><span class="screen-reader-text" style="display:none;">Twitter</span><svg class="svg-icon" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1668.56 1221.19"><path d="M283.94,167.31l386.39,516.64L281.5,1104h87.51l340.42-367.76L984.48,1104h297.8L874.15,558.3l361.92-390.99 h-87.51l-313.51,338.7l-253.31-338.7H283.94z M412.63,231.77h136.81l604.13,807.76h-136.81L412.63,231.77z" transform="translate(52.39 -25.059)"></path></svg></a></li>
@@ -86,10 +80,6 @@
 	</div>
 	<div class="clr"></div>
 		<div class="phone-social-div" style="display: none;">
-		<div class="each" >
-			<h3 style="margin-bottom:4px">Phone</h3>
-										<a class="footer-no" href="tel:97145460000">+971 4 546 0000</a>
-		</div>
 		<div class="each">
 			<h3 style="margin-bottom:4px">Social Media</h3>
 			<div class="menu-social-nav-container"><ul class="social-nav"><li class="twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a title="Follow AIX group on Twitter" target="_blank" rel="noopener" href="https://twitter.com/AIXinvestment"><span class="screen-reader-text" style="display:none;">Twitter</span><svg class="svg-icon" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1668.56 1221.19"><path d="M283.94,167.31l386.39,516.64L281.5,1104h87.51l340.42-367.76L984.48,1104h297.8L874.15,558.3l361.92-390.99 h-87.51l-313.51,338.7l-253.31-338.7H283.94z M412.63,231.77h136.81l604.13,807.76h-136.81L412.63,231.77z" transform="translate(52.39 -25.059)"></path></svg></a></li>

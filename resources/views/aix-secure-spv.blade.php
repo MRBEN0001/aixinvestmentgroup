@@ -400,21 +400,12 @@ function linkedinpixel(){
 
 	<header class="header clearfix">
     	<div class="container clearfix">
-            <a href="javascript:void(0);" class="mobile-nav-btn"></a>
-        	<a href="https://aixfincon.com" class="logo" ><img src="{{ asset('asset/aix-secure-spv/wp-content/uploads/2025/11/aix-financial-consultation-website.png') }}" alt="AIX Financial Consultation LLC"></a>
+        	<a href="{{ url('/') }}" class="logo" ><img src="{{ asset('asset/aix-secure-spv/wp-content/uploads/2025/11/aix-financial-consultation-website.png') }}" alt="AIX Financial Consultation LLC"></a>
             <div class="header-right">
 
                               <div class="text-right">
                     <ul class="header-top">
 
-                                          <li><a href="https://aixfincon.com/contact/#contact-form-main">SCHEDULE A MEETING</a></li>
-                                         
-                    
-                                           <!-- <li><a href="https://aixfincon.com/ar">Ã˜Â¹Ã˜Â±Ã˜Â¨Ã™Å </a></li>
-                       <li><a href="https://aixfincon.com/ru">RU  </a></li> -->
-                                        
-                    
-                    
                     </ul>
                                     </div>
               
@@ -424,147 +415,14 @@ function linkedinpixel(){
 
             	 <div class="clr"></div>
             	 <div class="header-btns">
-            	 	<a href="javascript:void(0);" class="search-btn"></a>
                     <div class="mobile-ls">
                                             </div>
 
-               <!--                    <a href="https://aixfincon.com/ar" class="mobile-ls">Ã˜Â¹Ã˜Â±Ã˜Â¨Ã™Å </a>
-                 -->
-
-
-                    
             	 </div>
             	<nav class="main-nav"> 
             		<ul class="menu"> 
-						<li id="home-menu"><a href="https://aixfincon.com/">Home</a>
-            			<li class="has-child-menu">
-            				<a href="https://aixfincon.com/the-firm/company-overview-financial-advisors-aix-investment-group/">The firm</a>
-            				<div class="mega-menu">
-            					<div class="container">
-            						<div class="mm-left">
-            							<h3>Overview</h3>
-            							<p>At AIX Financial Consultation LLC, we aim to provide exceptional client services while upholding the highest professional standards.</p>
-            							<a href="https://aixfincon.com/the-firm/company-overview-financial-advisors-aix-investment-group/" class="line-btn"> KNOW MORE</a>
-            						</div>
-            						<div class="mm-right">
-            							                 
-                            
-                                <ul>
-
-                                                                            <li ><a href="https://aixfincon.com/the-firm/company-overview-financial-advisors-aix-investment-group/">Overview</a></li>
-                                                                            <li ><a href="https://aixfincon.com/the-firm/who-we-are/">Who We Are</a></li>
-                                                                            <li ><a href="https://aixfincon.com/the-firm/what-we-do/">What We Do</a></li>
-                                                                            <li ><a href="https://aixfincon.com/the-firm/our-approach/">Our Approach</a></li>
-                                    
-                                </ul>
-                             
-
-
-            						</div>
-            					</div>
-            				</div>
-            			</li>
-            			<li class="has-child-menu"><a href="https://aixfincon.com/investors/">Our Clients</a>
-						<div class="mega-menu">
-            					<div class="container">
-            						<div class="mm-left">
-            							<h3>Overview</h3>
-            							<p>We promote bespoke investment solutions to clients coming from a diverse range of backgrounds and industries that meet their different investment requirements.</p>
-            							<a href="https://aixfincon.com/investors/" class="line-btn">KNOW MORE</a>
-            						</div>
-            						<div class="mm-right">
-            							
-
-                            <ul>
-                              <li id="overview-menusublink" class="sublinks"><a href="https://aixfincon.com/clients/#overview">Overview</a></li>
-                              
-                                
-                                <li  id="corporate-menusublink" class="sublinks">
-                                    <a href="https://aixfincon.com/clients/#corporate" >
-                                        Corporate                                    </a>
-                                </li>
-
-
-                              
-                                <li  id="individual-menusublink" class="sublinks">
-                                    <a href="https://aixfincon.com/clients/#individual" >
-                                        Individual                                     </a>
-                                </li>
-
-
-                              
-
-                                                      </ul>
-            						</div>
-            					</div>
-            				</div>
-						
-						</li>
-            			<li class="has-child-menu"><a href="https://aixfincon.com/promoted-product/aix-bond/">Promoted Products</a>
-						<div class="mega-menu">
-            					<div class="container">
-            						<div class="mm-left">
-            							<h3>Overview</h3>
-            							<p>We work closely with leading industry experts to deliver innovative, tailored solutions that effectively address the unique challenges and objectives of our clients.</p>
-            							<a style="display: none;" href="https://aixfincon.com/promoted-product/aix-bond/" class="line-btn">KNOW MORE</a>
-            						</div>
-            						<div class="mm-right">
-                                        <ul>
-											<li  id="about-aix-secure-spv-promoted-pdt-menusublink" class="sublinks">
-                                                <a href="/aix-secure-spv">
-                                                    AIX SECURE SPV
-                                                </a>
-                                            </li>
-                                            <li  id="about-aix-bond-promoted-pdt-menusublink" class="sublinks">
-                                                <a href="https://aixfincon.com/promoted-product/aix-bond/">
-                                                     AIX Bond                                                 </a>
-                                            </li>
-                                        </ul>
-            						</div>
-            					</div>
-            				</div>
-						
-						</li>
-						
-						<li class="has-child-menu"><a href="https://aixfincon.com/insights/">Insights</a>
-						<div class="mega-menu">
-            					<div class="container">
-            						<div class="mm-left">
-            							<h3>Overview</h3>
-            							<p>At AIX Financial Consultation LLC, we aim to provide exceptional client services while upholding the highest professional standards.</p>
-            							<a href="https://aixfincon.com/insights/" class="line-btn">KNOW MORE</a>
-            						</div>
-            						<div class="mm-right">
-                                        <ul>
-                                            <li  id="bond-investment-guide-insights-menusublink" class="sublinks">
-                                                <a href="https://aixfincon.com/fixed-rate-bonds/">
-                                                    BOND INVESTMENT GUIDE
-                                                </a>
-                                            </li>
-                                            <li  id="articles-insights-menusublink" class="sublinks">
-                                                <a href="https://aixfincon.com/insights">
-                                                    Articles
-                                                </a>
-                                            </li>
-                                        </ul>
-            						</div>
-            					</div>
-            				</div>
-						
-						</li>
-																														 
-            			<li id="contact-menu"><a href="https://aixfincon.com/contact-us/">Contact Us</a></li>
             		</ul>
             	</nav>
-            </div>
-            <div class="header-search-widget">
-                  <form role="search"  method="get" class="search-form" action="https://aixfincon.com/">
-	<label for="search-form-1">
-		<span class="screen-reader-text">Search for:</span>
-		<input type="search" id="search-form-1" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-	</label>
-	<input type="submit" class="search-submit" value="Search" />
-</form>
             </div>
         </div>
     </header>

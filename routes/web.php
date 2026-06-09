@@ -17,7 +17,9 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Middleware\CheckIfUserIsNotActive;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\ProfileSettingsNotificationController;
+use App\Models\Property;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
     return view('welcome');
@@ -110,8 +112,24 @@ Route::get('/aix-bond', function () {
     return view('aix-bond');
 })->name('aix-bond');
 Route::get('/aix-property-secure', function () {
-    return view('aix-property-secure');
+    $featuredProperties = Schema::hasTable('properties')
+        ? Property::query()->inRandomOrder('')->limit(6)->get()
+        : collect();
+
+    return view('aix-property-secure', compact('featuredProperties'));
 })->name('aix-property-secure');
+Route::get('/properties', function () {
+    $properties = Schema::hasTable('properties')
+        ? Property::query()
+            ->latest()
+            ->get()
+        : collect();
+
+    return view('properties', compact('properties'));
+})->name('properties');
+Route::get('/properties/{property}/payment', function (Property $property) {
+    return view('property-payment', compact('property'));
+})->name('properties.payment');
 Route::get('/cryptocurrencies', function () {
     return view('cryptocurrencies');
 })->name('cryptocurrencies');

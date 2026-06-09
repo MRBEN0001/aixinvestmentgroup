@@ -1,21 +1,9 @@
-@php
-    $selectedPlan = request('plan');
-    $cryptoPlans = [
-        'Starter Crypto Plan' => ['minimum' => '$500', 'maximum' => '$4,999'],
-        'Growth Crypto Plan' => ['minimum' => '$5,000', 'maximum' => '$24,999'],
-        'Premium Crypto Plan' => ['minimum' => '$25,000', 'maximum' => '$99,999'],
-        'Executive Crypto Plan' => ['minimum' => '$100,000', 'maximum' => '$249,999'],
-        'Institutional Crypto Plan' => ['minimum' => '$250,000', 'maximum' => '$1,000,000+'],
-    ];
-    $selectedPlanRange = $selectedPlan ? ($cryptoPlans[$selectedPlan] ?? null) : null;
-@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Payment | AIX Investment Group</title>
-    <link rel="stylesheet" href="{{ asset('asset/vendor/google-fonts/fonts.css') }}">
+    <title>Property Payment | AIX Investment Group</title>
     <style>
         :root {
             --aix-black: #070707;
@@ -80,7 +68,7 @@
 
         .payment-wrap {
             margin: 0 auto;
-            max-width: 1080px;
+            max-width: 1120px;
         }
 
         .eyebrow {
@@ -106,29 +94,51 @@
             font-size: 18px;
             line-height: 1.8;
             margin: 0 0 36px;
-            max-width: 760px;
+            max-width: 780px;
         }
 
-        .selected-plan {
-            background: rgba(176, 131, 97, 0.13);
-            border: 1px solid rgba(176, 131, 97, 0.42);
-            color: #fff;
-            display: inline-grid;
-            font-size: 15px;
-            font-weight: 700;
-            gap: 10px;
-            letter-spacing: 0.5px;
+        .property-summary {
+            align-items: stretch;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(176, 131, 97, 0.38);
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 280px 1fr;
             margin-bottom: 34px;
-            padding: 14px 18px;
+            padding: 22px;
+        }
+
+        .property-summary img,
+        .property-image-placeholder {
+            display: block;
+            height: 210px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .property-image-placeholder {
+            background: linear-gradient(135deg, rgba(176, 131, 97, 0.32), rgba(255, 255, 255, 0.06));
+        }
+
+        .property-summary h2 {
+            color: #fff;
+            font-size: 28px;
+            margin: 0 0 14px;
             text-transform: uppercase;
         }
 
-        .selected-plan span {
-            display: block;
+        .property-summary p {
+            color: var(--aix-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0 0 18px;
         }
 
-        .selected-plan-range {
+        .property-amount {
             color: var(--aix-light-gold);
+            display: block;
+            font-size: 26px;
+            font-weight: 700;
         }
 
         .coin-grid {
@@ -209,7 +219,8 @@
             }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 760px) {
+            .property-summary,
             .coin-grid {
                 grid-template-columns: 1fr;
             }
@@ -230,10 +241,6 @@
             .payment-section {
                 padding: 70px 5%;
             }
-
-            .selected-plan {
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -243,26 +250,30 @@
             <img src="{{ asset('asset/wp-content/themes/twentytwenty-child/assets/images/logo.png') }}" alt="AIX Investment Group Logo">
         </a>
         <nav>
-            <a href="{{ route('cryptocurrencies') }}">Plans</a>
+            <a href="{{ route('properties') }}">Properties</a>
             <a href="{{ url('/') }}">Home</a>
         </nav>
     </header>
 
     <main class="payment-section">
         <div class="payment-wrap">
-            <span class="eyebrow">Crypto Payment</span>
-            <h1>Complete Your Investment Payment</h1>
-            <p class="lead">Send your selected investment amount to one of the payment wallet addresses below. After payment, contact support through the live chat and send a screenshot of your payment for confirmation.</p>
+            <span class="eyebrow">Property Payment</span>
+            <h1>Complete Your Property Investment</h1>
+            <p class="lead">Pay the exact property amount shown below to one of the wallet addresses. After payment, chat support with your payment screenshot so they can proceed with your investment.</p>
 
-            @if ($selectedPlan)
-                <div class="selected-plan">
-                    <span>Selected plan: {{ $selectedPlan }}</span>
-                    @if ($selectedPlanRange)
-                        <span class="selected-plan-range">Minimum amount: {{ $selectedPlanRange['minimum'] }}</span>
-                        <span class="selected-plan-range">Maximum amount: {{ $selectedPlanRange['maximum'] }}</span>
-                    @endif
+            <section class="property-summary">
+                @if ($property->image_url)
+                    <img src="{{ $property->image_url }}" alt="{{ $property->title }}">
+                @else
+                    <div class="property-image-placeholder" aria-hidden="true"></div>
+                @endif
+
+                <div>
+                    <h2>{{ $property->title }}</h2>
+                    <p>{{ $property->description }}</p>
+                    <span class="property-amount">${{ number_format($property->price, 2) }}</span>
                 </div>
-            @endif
+            </section>
 
             <div class="coin-grid">
                 <article class="coin-card">
@@ -295,7 +306,7 @@
             </div>
 
             <div class="support-note">
-                <strong>Important:</strong> After making payment, open the live chat support and send your payment screenshot so the support team can verify and activate your investment.
+                <strong>Important:</strong> Pay the exact amount of ${{ number_format($property->price, 2) }}, then open live chat support and send your screenshot so the support team can verify the payment and proceed with your investment.
             </div>
         </div>
     </main>

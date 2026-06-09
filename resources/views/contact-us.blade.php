@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en-US" class="no-js no-svg">
 
@@ -666,53 +666,55 @@ h6.new-office {
 												AIX Investment Group
 									</h1>
 				<p>
-									<a class="address-loc-map" href="https://www.google.com/maps/place/AIX+Investment+Group/@25.197298,55.2740271,19z/data=!4m5!3m4!1s0x3e5f4360549def73:0x5c34dd0f3297c3cb!8m2!3d25.1970857!4d55.2733431" target="_blank" rel="noopener"><b>United Arab Emirates</b><br>Downtown, Dubai<br>Burj Khalifa<br>144<sup>th</sup>, 145<sup>th</sup> & 146<sup>th</sup> Floor</a>
+									<a class="address-loc-map" href="" target="_blank" rel="noopener"><b>United Arab Emirates</b><br>Downtown, Dubai<br>Burj Khalifa<br>111<sup>th</sup>, 112<sup>th</sup> & 1113<sup>th</sup> Floor</a>
 			               </p>
             </li>
 
             <li class="second-contact-detail animate-it fadeInLeft" data-delay="200">
                 <div class="dubai-cont">
-<h3>Call:</h3>
-<p>For our Switchboard,<br />
-please call <a href="tel:+97145460000">+971 4 546 0000</a></div>
-<div class="swiss-cont display-none">
-<h3>Call:</h3>
-<p>For our Switchboard,<br />
-please call <a href="tel:+41445271140">+41 44 527 11 40</a></p>
+                    <h3>Call:</h3>
+                    <p>For our Switchboard,<br />
+                    please call <a href="tel:+15806040561">+1 580 604 0561</a></p>
+                </div>
+                <div class="swiss-cont display-none">
+                    <h3>Call:</h3>
+                    <p>For our Switchboard,<br />
+                    please call <a href="tel:+15806040561">+1 580 604 0561</a></p>
+                </div>
             </li>
 
             <li class="second-contact-detail change-contact-detail animate-it fadeInLeft" data-delay="300">
                 <div class="dubai-cont">
 <h3>Alternatively, email us at:</h3>
-<p>Account:<a href="mailto:support@aixinvestment.com"> support@aixinvestment.com</a><br />
-General:<a href="mailto:info@aixinvestment.com"> info@aixinvestment.com</a></div>
+<p>Account:<a href="mailto:support@aixinvestment.com"> support@aixinvestmentgroup.top</a><br />
+General:<a href="mailto:info@aixinvestment.com"> info@aixinvestmentgroup.top</a></div>
 <div class="swiss-cont display-none">
 <h3>Alternatively, email us at:</h3>
 <p>Account &#038; General:<br />
-<a href="mailto:support@aixinvestment.ch"> support@aixinvestment.ch</a></div>
+<a href="mailto:support@aixinvestment.ch"> support@aixinvestmentgroup.top</a></div>
             </li>
 
             <li class="second-contact-detail animate-it fadeInLeft" data-delay="400">
                 <div class="dubai-cont">
-<h3>Location Map:</h3>
+{{-- <h3>Location Map:</h3>
 <p>To View Location, <a class="click-text-contact" href="https://www.google.com/maps/place/AIX+Investment+Group/@25.197298,55.2740271,19z/data=!4m5!3m4!1s0x3e5f4360549def73:0x5c34dd0f3297c3cb!8m2!3d25.1970857!4d55.2733431" target="_blank" rel="noopener">click here. </a></div>
 <div class="swiss-cont display-none">
 <h3>Location Map:</h3>
 <p>To View Location,<br />
 <a class='click-text-contact' href='https://www.google.com/maps/place/Brandschenkestrasse+43,+8002+ZÃ¼rich,+Switzerland/@47.3688086,8.5320642,17z/data=!3m1!4b1!4m6!3m5!1s0x47900a025f38d2d9:0x77834fb9b59ac5a9!8m2!3d47.3688086!4d8.5320642!16s%2Fg%2F11c0zc6y8q?entry=tts' target="_blank" rel="noopener">Brandschenkestrasse 43</a><br />
 <a class='click-text-contact' href="https://www.google.com/maps/place/Bahnhofstrasse+26,+8001+ZÃ¼rich,+Switzerland/@47.3694829,8.5394477,17z/data=!4m16!1m9!3m8!1s0x47900a00f4930ce7:0x2ec1c879ce7d820c!2sBahnhofstrasse+26,+8001+ZÃ¼rich,+Switzerland!3b1!8m2!3d47.3694695!4d8.539658!10e5!16s%2Fg%2F11c5dpq0zl!3m5!1s0x47900a00f4930ce7:0x2ec1c879ce7d820c!8m2!3d47.3694695!4d8.539658!16s%2Fg%2F11c5dpq0zl?entry=ttu&amp;g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Bahnhofstrasse 26</a></div>
-            </li>
-
+            </li> --}}
+{{-- 
             <li class="second-contact-detail animate-it fadeInLeft" data-delay="500">
                 <h3>Investor Relations:</h3>
 <p>To speak to one of our associates,<br />
 please call <a href="tel:+97145460000">+971 4 546 0000</a></p>
-            </li>
+            </li> --}}
 
             <li class="second-contact-detail animate-it fadeInLeft" data-delay="600">
                 <div class="dubai-cont">
 <h3>Media Relations:</h3>
-<p>For Media or press inquiries, contact <a href="mailto:media@aixinvestment.com">media@aixinvestment.com</a></div>
+<p>For Media or press inquiries, contact <a href="mailto:media@aixinvestment.com">info@aixinvestmentgroup.top</a></div>
 <div class="swiss-cont display-none">
 <h3>Media Relations:</h3>
 <p>For Media or press inquiries, contact <a href="mailto:support@aixinvestment.ch">support@aixinvestment.ch</a></div>

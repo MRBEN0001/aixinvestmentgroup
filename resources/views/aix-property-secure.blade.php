@@ -395,7 +395,7 @@ function linkedinpixel(){
 	<header class="header clearfix">
     	<div class="container clearfix">
             <a href="javascript:void(0);" class="mobile-nav-btn"></a>
-        	<a href="../..//aix-property-secure" class="logo"><img src="{{ asset('asset/aix-property-secure/wp-content/themes/twentytwenty-child/assets/images/logo.png') }}" alt="AIX Investment Group Logo"></a>
+        	<a href="{{ url('/') }}" class="logo"><img src="{{ asset('asset/aix-property-secure/wp-content/themes/twentytwenty-child/assets/images/logo.png') }}" alt="AIX Investment Group Logo"></a>
             <div class="header-right">
 
                               <div class="text-right">
@@ -543,18 +543,14 @@ function linkedinpixel(){
             						<div class="mm-right">
             							                 
                                     <ul>
-										<li  id="investment_product-aixsecurespv-menusublink" class="sublinks">
-                                            <a target="_blank" href="https://aixfincon.com/promoted-product/aix-secure-spv/">
-                                                AIX Secure SPV
-                                            </a>
-                                        </li>
-                                        <li  id="investment_product-aixbond-menusublink" class="sublinks">
-                                            <a target="_blank" href="https://aixfincon.com/promoted-product/aix-bond/">
-                                                AIX Bond                                             </a>
-                                        </li>
 										<li  id="investment_product-aixpropertysecure-menusublink" class="sublinks">
                                             <a href="/aix-property-secure">
                                                 AIX Property Secure                                             </a>
+                                        </li>
+                                        <li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
+                                            <a href="{{ route('cryptocurrencies') }}">
+                                                Cryptocurrencies
+                                            </a>
                                         </li>
                                     </ul>
 
@@ -723,6 +719,250 @@ function linkedinpixel(){
                     
                 </div>
             </section>
+
+            @php($featuredProperties = $featuredProperties ?? collect())
+
+            @if ($featuredProperties->isNotEmpty())
+                <style>
+                    .aix-property-showcase {
+                        background: #f7f7f7;
+                        padding: 80px 0;
+                    }
+
+                    .aix-property-showcase .container {
+                        max-width: 1180px !important;
+                    }
+
+                    .aix-property-showcase-header {
+                        margin-bottom: 38px;
+                        text-align: center;
+                    }
+
+                    .aix-property-showcase-header span {
+                        color: #b08361;
+                        display: block;
+                        font-size: 13px;
+                        font-weight: 700;
+                        letter-spacing: 3px;
+                        margin-bottom: 12px;
+                        text-transform: uppercase;
+                    }
+
+                    .aix-property-showcase-header h3 {
+                        color: #191919;
+                        font-size: clamp(32px, 4vw, 54px);
+                        line-height: 1.05;
+                        margin: 0;
+                        text-transform: uppercase;
+                    }
+
+                    .aix-property-grid {
+                        display: grid;
+                        gap: 26px;
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+
+                    .aix-property-card {
+                        background: #fff;
+                        border: 1px solid rgba(176, 131, 97, 0.28);
+                        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+                        overflow: hidden;
+                    }
+
+                    .aix-property-card img,
+                    .aix-property-card-placeholder {
+                        display: block;
+                        height: 230px;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+
+                    .aix-property-image-trigger {
+                        background: none;
+                        border: 0;
+                        cursor: zoom-in;
+                        display: block;
+                        padding: 0;
+                        width: 100%;
+                    }
+
+                    .aix-property-card-placeholder {
+                        background: linear-gradient(135deg, rgba(176, 131, 97, 0.28), rgba(0, 0, 0, 0.08));
+                    }
+
+                    .aix-property-card-body {
+                        padding: 24px;
+                    }
+
+                    .aix-property-card h4 {
+                        color: #191919;
+                        font-size: 22px;
+                        margin: 0 0 12px;
+                        text-transform: uppercase;
+                    }
+
+                    .aix-property-card p {
+                        color: #595959;
+                        font-size: 15px;
+                        line-height: 1.7;
+                        margin: 0 0 18px;
+                    }
+
+                    .aix-property-card-price {
+                        color: #b08361;
+                        display: block;
+                        font-size: 22px;
+                        font-weight: 700;
+                        margin-bottom: 22px;
+                    }
+
+                    .aix-property-card-action,
+                    .aix-property-view-more {
+                        background: #b08361;
+                        color: #fff;
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        padding: 13px 20px;
+                        text-transform: uppercase;
+                    }
+
+                    .aix-property-showcase-footer {
+                        margin-top: 42px;
+                        text-align: center;
+                    }
+
+                    .aix-property-image-modal {
+                        align-items: center;
+                        background: rgba(0, 0, 0, 0.88);
+                        display: none;
+                        inset: 0;
+                        justify-content: center;
+                        padding: 28px;
+                        position: fixed;
+                        z-index: 99999;
+                    }
+
+                    .aix-property-image-modal.is-open {
+                        display: flex;
+                    }
+
+                    .aix-property-image-modal img {
+                        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+                        max-height: 90vh;
+                        max-width: 95vw;
+                        object-fit: contain;
+                    }
+
+                    .aix-property-modal-close {
+                        background: #b08361;
+                        border: 0;
+                        color: #fff;
+                        cursor: pointer;
+                        font-size: 30px;
+                        height: 48px;
+                        line-height: 1;
+                        position: absolute;
+                        right: 24px;
+                        top: 24px;
+                        width: 48px;
+                    }
+
+                    @media (max-width: 980px) {
+                        .aix-property-grid {
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
+                        }
+                    }
+
+                    @media (max-width: 640px) {
+                        .aix-property-showcase {
+                            padding: 58px 0;
+                        }
+
+                        .aix-property-grid {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+
+                <section class="aix-property-showcase">
+                    <div class="container">
+                        <div class="aix-property-showcase-header">
+                            <span>Property Opportunities</span>
+                            <h3>Available Properties</h3>
+                        </div>
+
+                        <div class="aix-property-grid">
+                            @foreach ($featuredProperties as $property)
+                                <article class="aix-property-card">
+                                    @if ($property->image_url)
+                                        <button class="aix-property-image-trigger" type="button" data-property-image="{{ $property->image_url }}" data-property-title="{{ $property->title }}">
+                                            <img src="{{ $property->image_url }}" alt="{{ $property->title }}">
+                                        </button>
+                                    @else
+                                        <div class="aix-property-card-placeholder" aria-hidden="true"></div>
+                                    @endif
+
+                                    <div class="aix-property-card-body">
+                                        <h4>{{ $property->title }}</h4>
+                                        <p>{{ $property->description }}</p>
+                                        <span class="aix-property-card-price">${{ number_format($property->price, 2) }}</span>
+                                        <a class="aix-property-card-action" href="{{ route('properties.payment', $property) }}">Invest</a>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+
+                        <div class="aix-property-showcase-footer">
+                            <a class="aix-property-view-more" href="{{ route('properties') }}">View More Properties</a>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="aix-property-image-modal" id="aixPropertyImageModal" aria-hidden="true">
+                    <button class="aix-property-modal-close" type="button" aria-label="Close property image">&times;</button>
+                    <img src="" alt="">
+                </div>
+
+                <script>
+                    (function () {
+                        var modal = document.getElementById('aixPropertyImageModal');
+                        var modalImage = modal.querySelector('img');
+                        var closeButton = modal.querySelector('.aix-property-modal-close');
+
+                        function closeModal() {
+                            modal.classList.remove('is-open');
+                            modal.setAttribute('aria-hidden', 'true');
+                            modalImage.setAttribute('src', '');
+                            modalImage.setAttribute('alt', '');
+                        }
+
+                        document.querySelectorAll('.aix-property-image-trigger').forEach(function (trigger) {
+                            trigger.addEventListener('click', function () {
+                                modalImage.setAttribute('src', trigger.getAttribute('data-property-image'));
+                                modalImage.setAttribute('alt', trigger.getAttribute('data-property-title') || 'Property image');
+                                modal.classList.add('is-open');
+                                modal.setAttribute('aria-hidden', 'false');
+                            });
+                        });
+
+                        closeButton.addEventListener('click', closeModal);
+
+                        modal.addEventListener('click', function (event) {
+                            if (event.target === modal) {
+                                closeModal();
+                            }
+                        });
+
+                        document.addEventListener('keydown', function (event) {
+                            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+                                closeModal();
+                            }
+                        });
+                    })();
+                </script>
+            @endif
         
         
   <div class="product-dynamic-counter-container clearfix animate-it fadeInUp" style="display:none">

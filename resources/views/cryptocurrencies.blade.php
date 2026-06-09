@@ -24,6 +24,7 @@
             color: var(--aix-text);
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
+            overflow-x: hidden;
         }
 
         a {
@@ -64,6 +65,7 @@
         .crypto-wrap {
             margin: 0 auto;
             max-width: 1180px;
+            width: 100%;
         }
 
         .eyebrow {
@@ -77,10 +79,11 @@
         }
 
         h1 {
-            font-size: clamp(42px, 7vw, 82px);
+            font-size: clamp(34px, 7vw, 82px);
             line-height: 0.98;
             margin: 0 0 26px;
             max-width: 850px;
+            overflow-wrap: anywhere;
             text-transform: uppercase;
         }
 
@@ -108,9 +111,10 @@
         }
 
         h2 {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(28px, 5vw, 56px);
             line-height: 1.05;
             margin: 0;
+            overflow-wrap: anywhere;
             text-transform: uppercase;
         }
 
@@ -155,7 +159,7 @@
         .plans-grid {
             display: grid;
             gap: 24px;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
 
         .plan-card {
@@ -241,12 +245,14 @@
 
         @media (max-width: 1100px) {
             .plans-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 760px) {
             .crypto-header {
+                align-items: flex-start;
+                flex-direction: column;
                 gap: 16px;
                 padding: 16px 5%;
             }
@@ -262,9 +268,46 @@
                 padding-right: 5%;
             }
 
+            .crypto-hero {
+                padding-top: 70px;
+                padding-bottom: 64px;
+            }
+
+            .crypto-intro,
+            .crypto-plans {
+                padding-top: 58px;
+                padding-bottom: 58px;
+            }
+
             .intro-grid,
             .plans-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .return-notice {
+                font-size: 15px;
+                padding: 16px;
+            }
+
+            .plan-card {
+                min-height: auto;
+                padding: 24px 18px;
+            }
+
+            .plan-action {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .crypto-header a:last-child {
+                text-align: center;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 32px;
             }
         }
     </style>
@@ -302,7 +345,7 @@
                 <span class="eyebrow">Plans</span>
                 <h2>Cryptocurrency Investment Plans</h2>
                 <p>Select from five structured plans with clear minimum and maximum investment ranges.</p>
-                <div class="return-notice">All cryptocurrency investment plans give 100% return in 30 days.</div>
+                <div class="return-notice">All cryptocurrency investment plans give 30% return in 30 days.</div>
             </div>
 
             <div class="plans-grid">

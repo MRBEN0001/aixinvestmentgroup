@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-US" class="no-js no-svg">
 
 <!-- Mirrored from www.aixinvestment.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jun 2026 16:37:46 GMT -->
@@ -619,7 +619,7 @@ src="https://www.facebook.com/tr?id=234805925624462&amp;ev=PageView&amp;noscript
             						<div class="mm-right">
             							                 
                                     <ul>
-										<li  id="investment_product-aixsecurespv-menusublink" class="sublinks">
+										{{-- <li  id="investment_product-aixsecurespv-menusublink" class="sublinks">
                                             <a href="{{ route('aix-secure-spv') }}">
                                                 AIX Secure SPV
                                             </a>
@@ -627,7 +627,7 @@ src="https://www.facebook.com/tr?id=234805925624462&amp;ev=PageView&amp;noscript
                                         <li  id="investment_product-aixbond-menusublink" class="sublinks">
                                             <a href="{{ route('aix-bond') }}">
                                                 AIX Bond                                             </a>
-                                        </li>
+                                        </li> --}}
 										<li  id="investment_product-aixpropertysecure-menusublink" class="sublinks">
                                             <a href="{{ route('aix-property-secure') }}">
                                                 AIX Property Secure                                             </a>
@@ -1442,7 +1442,7 @@ by Real Madrid player
                                 </svg>
                             </span>
                             <h2 class="tag-line">Empowering Tomorrow, Together</h2>
-                            <p class="tag-text">We Are The Future, the dynamic partnership vertical of AIX Investment Group, unites visionaries, innovators, and changemakers to shape a better tomorrow. Through impactful partnerships, we amplify our collective impact to tackle global challenges, foster sustainable development, and empower communities worldwide. Together, we achieve dreams and build a brighter future.<br/><a class="float-right know-more-btn" target="_blank" href="https://wearethefuture-aix.com/">To know more >></a></p>
+                            <p class="tag-text">We Are The Future, the dynamic partnership vertical of AIX Investment Group, unites visionaries, innovators, and changemakers to shape a better tomorrow. Through impactful partnerships, we amplify our collective impact to tackle global challenges, foster sustainable development, and empower communities worldwide. Together, we achieve dreams and build a brighter future.<br/><a class="float-right know-more-btn" target="_blank" href="{{ route('contact-us') }}">To know more >></a></p>
                         </div>
                     </div>
                     <div class="content-layout-cell">
@@ -1734,7 +1734,6 @@ by Real Madrid player
             </article> -->
                             
                     <article class="news latest">
-                        <a href="eid-al-adha-mubarak-2026/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-1.png" alt="Eid al-Adha Mubarak"  style="background-image: url('asset/wp-content/uploads/2026/05/Ramadan-EID_WATF_12May_EID-AL-ADHA_1106x1702-851x553.jpg');">
@@ -1753,11 +1752,9 @@ by Real Madrid player
                                                                         <span class="date">May 26, 2026</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                                         
                     <article class="news vertical">
-                        <a href="eid-mubarak-2026/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-2.png" alt="Eid Mubarak"  style="background-image: url('asset/wp-content/uploads/2026/03/eid-mubarak-website-851x553.jpg');">
@@ -1776,11 +1773,9 @@ by Real Madrid player
                                                                         <span class="date">March 19, 2026</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                     <div class="clr"></div>                    
                     <article class="news horizontal">
-                        <a href="ramadan-kareem-2026/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-3.png" alt="Ramadan Kareem"  style="background-image: url('asset/wp-content/uploads/2026/02/AIX-Investment-Group-Ramadan-Kareem-Website-Size-851x553.jpg');">
@@ -1799,11 +1794,9 @@ by Real Madrid player
                                                                         <span class="date">February 17, 2026</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                                         
                     <article class="news no-img">
-                        <a href="aix-investment-group-featured-in-gulf-business-february-2026/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-3.png" alt="AIX Investment Group Featured in Gulf Business Ã¢â‚¬â€œ February 2026"  style="background-image: url('asset/wp-content/uploads/2026/02/AIX-INVESTMENT-Gulf-News-Cover_Finalize-Horizontal_Without-Text-851x553.jpg');">
@@ -1823,11 +1816,9 @@ by Real Madrid player
                                                                         <span class="date">February 3, 2026</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                     <div class="clr"></div>                    
                     <article class="news no-img float-left">
-                        <a href="strength-in-strategy/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-3.png" alt="Strength in Strategy"  style="background-image: url('asset/wp-content/uploads/2026/01/Cover-Image-9-851x553.jpg');">
@@ -1846,11 +1837,9 @@ by Real Madrid player
                                                                         <span class="date">January 23, 2026</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                                         
                     <article class="news horizontal float-right">
-                        <a href="happy-new-year-2026/index.html">
                             <div class="thumbnail animate-it" data-delay="100">
                                 
                                     <img src="asset/wp-content/themes/twentytwenty-child/assets/images/news-blank-3.png" alt="Happy New Year"  style="background-image: url('asset/wp-content/uploads/2025/12/Happy-New-Year-851x553.jpg');">
@@ -1869,18 +1858,17 @@ by Real Madrid player
                                                                         <span class="date">December 31, 2025</span>
                                 </div>
                             </div>
-                        </a>
                     </article>
                     <div class="clr"></div>                    
             
         </div>
         <div class="clr"></div>
-        <a href="insights/index.html" class="arrow-link animate-it fadeInUp">
+        {{-- <a href="insights/index.html" class="arrow-link animate-it fadeInUp">
              View<br>All News</a>
         <div class="news-bottom animate-it fadeInUp">
             <a href="insights/index.html" class="btn-bordered">
 				 SEE ALL INSIGHTS 			</a>
-        </div>
+        </div> --}}
     </div>
 </section>
 <!-- ============================carousel start ============= -->
@@ -1924,12 +1912,12 @@ by Real Madrid player
                                         AIX Investment Group provides platform for young talents to showcase abilities                                    </p>
                                     <span>
                                          Mar 07, 2024                                     </span>
-                                    <div class="btnHolder">
+                                    {{-- <div class="btnHolder">
                                         <a href="https://gulfnews.com/business/corporate-news/aix-investment-group-holds-dubai-intercontinental-football-cup-1.1709810921095"
                                             target="_blank" tabindex="-1">
                                             												Read More
 											</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

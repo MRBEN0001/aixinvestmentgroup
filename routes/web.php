@@ -130,6 +130,9 @@ Route::get('/properties', function () {
 Route::get('/properties/{property}/payment', function (Property $property) {
     return view('property-payment', compact('property'));
 })->name('properties.payment');
+Route::get('/properties/{property}', function (Property $property) {
+    return view('property-details', compact('property'));
+})->name('properties.show');
 Route::get('/cryptocurrencies', function () {
     return view('cryptocurrencies');
 })->name('cryptocurrencies');

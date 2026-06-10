@@ -113,6 +113,18 @@
             width: 100%;
         }
 
+        .property-image-slider {
+            position: relative;
+        }
+
+        .property-slide {
+            display: none;
+        }
+
+        .property-slide.is-active {
+            display: block;
+        }
+
         .property-image-trigger {
             background: none;
             border: 0;
@@ -152,6 +164,12 @@
             margin-bottom: 22px;
         }
 
+        .property-card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
         .property-action,
         .empty-action {
             background: var(--aix-gold);
@@ -162,6 +180,12 @@
             letter-spacing: 1px;
             padding: 12px 18px;
             text-transform: uppercase;
+        }
+
+        .property-action.secondary {
+            background: transparent;
+            border: 1px solid var(--aix-gold);
+            color: var(--aix-light-gold);
         }
 
         .empty-state {
@@ -260,10 +284,14 @@
                 @endif
 
                 <article class="property-card">
-                    @if ($property->image_url)
-                        <button class="property-image-trigger" type="button" data-property-image="{{ $property->image_url }}" data-property-title="{{ $property->title }}">
-                            <img src="{{ $property->image_url }}" alt="{{ $property->title }}">
-                        </button>
+                    @if (! empty($property->property_images))
+                        <div class="property-image-slider" data-property-slider>
+                            @foreach ($property->property_images as $image)
+                                <button class="property-image-trigger property-slide {{ $loop->first ? 'is-active' : '' }}" type="button" data-property-image="{{ $image }}" data-property-title="{{ $property->title }}">
+                                    <img src="{{ $image }}" alt="{{ $property->title }}">
+                                </button>
+                            @endforeach
+                        </div>
                     @else
                         <div class="property-image-placeholder" aria-hidden="true"></div>
                     @endif
@@ -271,7 +299,10 @@
                         <h2>{{ $property->title }}</h2>
                         <p>{{ $property->description }}</p>
                         <span class="property-price">${{ number_format($property->price, 2) }}</span>
-                        <a class="property-action" href="{{ route('properties.payment', $property) }}">Invest</a>
+                        <div class="property-card-actions">
+                            <a class="property-action" href="{{ route('properties.payment', $property) }}">Invest</a>
+                            <a class="property-action secondary" href="{{ route('properties.show', $property) }}">View Details</a>
+                        </div>
                     </div>
                 </article>
 
@@ -295,6 +326,22 @@
     @include('partials.schedule-meeting-modal')
     <script>
         (function () {
+            document.querySelectorAll('[data-property-slider]').forEach(function (slider) {
+                var slides = slider.querySelectorAll('.property-slide');
+
+                if (slides.length < 2) {
+                    return;
+                }
+
+                var currentIndex = 0;
+
+                setInterval(function () {
+                    slides[currentIndex].classList.remove('is-active');
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    slides[currentIndex].classList.add('is-active');
+                }, 3000);
+            });
+
             var modal = document.getElementById('propertyImageModal');
             var modalImage = modal.querySelector('img');
             var closeButton = modal.querySelector('.property-modal-close');

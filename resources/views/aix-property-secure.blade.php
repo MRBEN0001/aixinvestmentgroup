@@ -401,7 +401,7 @@ function linkedinpixel(){
                               <div class="text-right">
                     <ul class="header-top">
 
-                                          <li><a href="../../contact//aix-property-secure#contact-form-main">Schedule A Meeting</a></li>
+                                          <li><a href="{{ route('contact-us') }}#contact-form-main">Schedule A Meeting</a></li>
                                          
                     
                                            <!-- <li><a href="https://www.aixinvestment.com/ar">Ã˜Â¹Ã˜Â±Ã˜Â¨Ã™Å </a></li>
@@ -563,7 +563,7 @@ function linkedinpixel(){
             			<li><a href="../../insights//aix-property-secure" >Insights</a>
 						
 						</li>
-            			<li id="contact-menu"><a href="../../contact//aix-property-secure">Contact Us</a>
+            			<li id="contact-menu"><a href="{{ route('contact-us') }}">Contact Us</a>
 						
 						</li>
             		</ul>
@@ -638,7 +638,7 @@ function linkedinpixel(){
           <div class="product-digital-assets-first-banner-content">
              <h3>Diverse, Rewarding, Individualized</h3> 
              
-              <a href="../../contact//aix-property-secure#contact-form-main">Schedule a meeting now</a>
+              <a href="{{ route('contact-us') }}#contact-form-main">Schedule a meeting now</a>
              
           </div>
 
@@ -777,13 +777,16 @@ function linkedinpixel(){
                         width: 100%;
                     }
 
-                    .aix-property-image-trigger {
-                        background: none;
-                        border: 0;
-                        cursor: zoom-in;
+                    .aix-property-image-slider {
+                        position: relative;
+                    }
+
+                    .aix-property-slide {
+                        display: none;
+                    }
+
+                    .aix-property-slide.is-active {
                         display: block;
-                        padding: 0;
-                        width: 100%;
                     }
 
                     .aix-property-card-placeholder {
@@ -808,15 +811,24 @@ function linkedinpixel(){
                         margin: 0 0 18px;
                     }
 
-                    .aix-property-card-price {
+                    .aix-property-card-title {
                         color: #b08361;
                         display: block;
                         font-size: 22px;
                         font-weight: 700;
+                        line-height: 1.25;
                         margin-bottom: 22px;
+                        text-transform: uppercase;
+                    }
+
+                    .aix-property-card-actions {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 12px;
                     }
 
                     .aix-property-card-action,
+                    .aix-property-detail-action,
                     .aix-property-view-more {
                         background: #b08361;
                         color: #fff;
@@ -826,6 +838,12 @@ function linkedinpixel(){
                         letter-spacing: 1px;
                         padding: 13px 20px;
                         text-transform: uppercase;
+                    }
+
+                    .aix-property-detail-action {
+                        background: transparent;
+                        border: 1px solid #b08361;
+                        color: #b08361;
                     }
 
                     .aix-property-showcase-footer {
@@ -896,19 +914,24 @@ function linkedinpixel(){
                         <div class="aix-property-grid">
                             @foreach ($featuredProperties as $property)
                                 <article class="aix-property-card">
-                                    @if ($property->image_url)
-                                        <button class="aix-property-image-trigger" type="button" data-property-image="{{ $property->image_url }}" data-property-title="{{ $property->title }}">
-                                            <img src="{{ $property->image_url }}" alt="{{ $property->title }}">
-                                        </button>
+                                    @if (! empty($property->property_images))
+                                        <div class="aix-property-image-slider" data-aix-property-slider>
+                                            @foreach ($property->property_images as $image)
+                                                <div class="aix-property-slide {{ $loop->first ? 'is-active' : '' }}">
+                                                    <img src="{{ $image }}" alt="{{ $property->title }}">
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     @else
                                         <div class="aix-property-card-placeholder" aria-hidden="true"></div>
                                     @endif
 
                                     <div class="aix-property-card-body">
-                                        <h4>{{ $property->title }}</h4>
-                                        <p>{{ $property->description }}</p>
-                                        <span class="aix-property-card-price">${{ number_format($property->price, 2) }}</span>
-                                        <a class="aix-property-card-action" href="{{ route('properties.payment', $property) }}">Invest</a>
+                                        <span class="aix-property-card-title">{{ $property->title }}</span>
+                                        <div class="aix-property-card-actions">
+                                            <a class="aix-property-card-action" href="{{ route('properties.payment', $property) }}">Invest</a>
+                                            <a class="aix-property-detail-action" href="{{ route('properties.show', $property) }}">View Details</a>
+                                        </div>
                                     </div>
                                 </article>
                             @endforeach
@@ -920,47 +943,22 @@ function linkedinpixel(){
                     </div>
                 </section>
 
-                <div class="aix-property-image-modal" id="aixPropertyImageModal" aria-hidden="true">
-                    <button class="aix-property-modal-close" type="button" aria-label="Close property image">&times;</button>
-                    <img src="" alt="">
-                </div>
-
                 <script>
-                    (function () {
-                        var modal = document.getElementById('aixPropertyImageModal');
-                        var modalImage = modal.querySelector('img');
-                        var closeButton = modal.querySelector('.aix-property-modal-close');
+                    document.querySelectorAll('[data-aix-property-slider]').forEach(function (slider) {
+                        var slides = slider.querySelectorAll('.aix-property-slide');
 
-                        function closeModal() {
-                            modal.classList.remove('is-open');
-                            modal.setAttribute('aria-hidden', 'true');
-                            modalImage.setAttribute('src', '');
-                            modalImage.setAttribute('alt', '');
+                        if (slides.length < 2) {
+                            return;
                         }
 
-                        document.querySelectorAll('.aix-property-image-trigger').forEach(function (trigger) {
-                            trigger.addEventListener('click', function () {
-                                modalImage.setAttribute('src', trigger.getAttribute('data-property-image'));
-                                modalImage.setAttribute('alt', trigger.getAttribute('data-property-title') || 'Property image');
-                                modal.classList.add('is-open');
-                                modal.setAttribute('aria-hidden', 'false');
-                            });
-                        });
+                        var currentIndex = 0;
 
-                        closeButton.addEventListener('click', closeModal);
-
-                        modal.addEventListener('click', function (event) {
-                            if (event.target === modal) {
-                                closeModal();
-                            }
-                        });
-
-                        document.addEventListener('keydown', function (event) {
-                            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-                                closeModal();
-                            }
-                        });
-                    })();
+                        setInterval(function () {
+                            slides[currentIndex].classList.remove('is-active');
+                            currentIndex = (currentIndex + 1) % slides.length;
+                            slides[currentIndex].classList.add('is-active');
+                        }, 3000);
+                    });
                 </script>
             @endif
         

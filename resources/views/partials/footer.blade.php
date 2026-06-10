@@ -69,7 +69,7 @@
 
 	<div class="footer-nav mobile-footer">
 
-		<div class="menu-footer-menu-mobile-container"><ul id="menu-footer-menu-mobile" class="menu"><li id="menu-item-899" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-56 current_page_item menu-item-899"><a href="index.html" aria-current="page">Home</a></li>
+		<div class="menu-footer-menu-mobile-container"><ul id="menu-footer-menu-mobile" class="menu">
 {{-- <li id="menu-item-909" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-909"><a href="{{ route('insights') }}">Insights</a></li> --}}
 {{-- <li id="menu-item-912" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-912"><a href="careers/index.html">Careers</a></li> --}}
 {{-- <li id="menu-item-901" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-901"><a href="{{ route('contact-us') }}">Contact Us</a></li> --}}

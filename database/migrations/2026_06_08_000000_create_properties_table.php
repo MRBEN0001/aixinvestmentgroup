@@ -12,7 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image')->nullable();
+            $table->json('images')->nullable();
             $table->text('description');
+            $table->json('features')->nullable();
             $table->decimal('price', 15, 2);
             $table->timestamps();
         });

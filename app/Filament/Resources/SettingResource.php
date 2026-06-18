@@ -8,37 +8,25 @@ use App\Models\Setting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
-
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $navigationIcon = 'heroicon-o-cog';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-                Forms\Components\TextInput::make('network')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('address')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('instruction')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('fee')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\TextInput::make('key')->required(),
+                Forms\Components\TextInput::make('value')->required()->numeric(),
+
             ]);
     }
 
@@ -46,23 +34,8 @@ class SettingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('network')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('instruction')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('fee')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('key')->searchable(),
+                Tables\Columns\TextColumn::make('value'),
             ])
             ->filters([
                 //
@@ -71,9 +44,7 @@ class SettingResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -91,5 +62,14 @@ class SettingResource extends Resource
             'create' => Pages\CreateSetting::route('/create'),
             'edit' => Pages\EditSetting::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+    public static function canDelete(Model $record): bool
+    {
+        return false;
     }
 }

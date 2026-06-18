@@ -16,4 +16,10 @@ class ListAccounts extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['balance'] = $data['balance'] / 100;
+        return $data;
+    }
 }

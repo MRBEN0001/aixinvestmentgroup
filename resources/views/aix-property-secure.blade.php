@@ -552,6 +552,11 @@ function linkedinpixel(){
                                                 Cryptocurrencies
                                             </a>
                                         </li>
+                                        <li id="investment_product-cryptocurrencies2-menusublink" class="sublinks">
+                                            <a href="{{ route('cryptocurrencies2') }}">
+                                                Cryptocurrencies 2
+                                            </a>
+                                        </li>
                                     </ul>
 
             						</div>

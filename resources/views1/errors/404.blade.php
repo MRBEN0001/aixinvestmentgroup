@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Finance and Investment HTML Template by Indonez">
+    <meta name="keywords" content="blockit, bootstrap, indonez, handlebars, scss, javascript">
+    <meta name="author" content="Indonez">
+    <meta name="theme-color" content="#DF4478">
+    <!-- critical preload -->
+    <link rel="preload" href="{{ asset('front-end/js/vendors/bootstrap.bundle.min.js') }}" as="script">
+    <link rel="preload" href="{{ asset('front-end/css/style.css') }}" as="style">
+    <!-- icon preload -->
+    <link rel="preload" href="{{ asset('front-end/fonts/fa-brands-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('front-end/fonts/fa-solid-900.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <!-- font preload -->
+    <link rel="preload" href="{{ asset('front-end/fonts/dm-sans-v11-latin-700.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('front-end/fonts/dm-sans-v11-latin-regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{ asset('front-end/css/style.css') }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('front-end/img/favicon.ico') }}" type="image/x-icon">
+    <!-- Touch icon -->
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('front-end/img/apple-touch-icon.png') }}">
+
+    <title>404 Error - Avo HTML Template</title>
+</head>
+
+<body>
+    <!-- page loader begin -->
+    <div class="page-loader w-100 h-100 bg-white d-flex justify-content-center align-items-center position-fixed overflow-hidden">
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+        <div class="spinner-grow spinner-grow-sm text-primary"></div>
+    </div>
+    <!-- page loader end -->
+    <main>
+        <!-- section content begin -->
+        <section class="container">
+            <div class="row justify-content-center align-items-center vh-100">
+                <div class="col-md-7 col-lg-9 mt-n5">
+                    <div class="row row-cols-md-1 row-cols-lg-2 d-flex align-items-stretch">
+                        <div class="col border-end-md-0 border-end-lg d-flex justify-content-center justify-content-lg-start align-items-center">
+                            <div class="d-flex align-items-baseline not-found">
+                                <div class="me-2">
+                                    <i class="fas fa-exclamation-triangle fa-6x text-danger"></i>
+                                </div>
+                                <div>
+                                    <h1 class="fw-bold text-danger">404</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <hr class="d-lg-none my-md-2">
+                            <div class="ps-md-0 ps-lg-4 pt-md-2 pt-lg-1 pb-3 text-center text-lg-start">
+                                <h1 class="fw-bold display-4">Oops!</h1>
+                                <p class="lead text-muted my-3">The page you're looking for doesn't exist, or was loaded incorrectly.</p>
+                                <a href="/" class="btn btn-outline-primary rounded-pill">Back to homepage<i class="fas fa-arrow-right fa-sm ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section content end -->
+    </main>
+    <!-- javascript -->
+    <script src="{{ asset('front-end/js/vendors/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('front-end/js/vendors/vanilla-marquee.min.js') }}"></script>
+    <script src="{{ asset('front-end/js/utilities.min.js') }}"></script>
+    <script src="{{ asset('front-end/js/config-theme.js') }}"></script>
+
+</body>
+
+</html>

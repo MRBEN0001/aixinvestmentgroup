@@ -181,7 +181,7 @@ Route::get('/cryptocurrencies/payment', function () {
     return view('cryptocurrencies-payment');
 })->name('cryptocurrencies.payment');
 
-Route::redirect('/cryptocurrencies2', '/register')->name('cryptocurrencies2');
+Route::redirect('/cryptocurrencies2', '/login')->name('cryptocurrencies2');
 
 // About Us
 

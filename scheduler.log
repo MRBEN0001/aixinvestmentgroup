@@ -1,0 +1,234 @@
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Expected response code "250/251/252" but got empty code.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:307
+    303▕         if (!$valid || !$response) {
+    304▕             $codeStr = $code ? sprintf('code "%s"', $code) : 'empty code';
+    305▕             $responseStr = $response ? sprintf(', with message "%s"', trim($response)) : '';
+    306▕ 
+  ➜ 307▕             throw new TransportException(sprintf('Expected response code "%s" but got ', implode('/', $codes)).$codeStr.$responseStr.'.', $code ?: 0);
+    308▕         }
+    309▕     }
+    310▕ 
+    311▕     private function getFullResponse(): string
+
+  1   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:182
+      Symfony\Component\Mailer\Transport\Smtp\SmtpTransport::assertResponseCode("")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:240
+      Symfony\Component\Mailer\Transport\Smtp\SmtpTransport::executeCommand("RCPT TO:<yreynolds@example.org>
+")
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Expected response code "250" but got empty code.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:307
+    303▕         if (!$valid || !$response) {
+    304▕             $codeStr = $code ? sprintf('code "%s"', $code) : 'empty code';
+    305▕             $responseStr = $response ? sprintf(', with message "%s"', trim($response)) : '';
+    306▕ 
+  ➜ 307▕             throw new TransportException(sprintf('Expected response code "%s" but got ', implode('/', $codes)).$codeStr.$responseStr.'.', $code ?: 0);
+    308▕         }
+    309▕     }
+    310▕ 
+    311▕     private function getFullResponse(): string
+
+  1   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:182
+      Symfony\Component\Mailer\Transport\Smtp\SmtpTransport::assertResponseCode("")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\SmtpTransport.php:235
+      Symfony\Component\Mailer\Transport\Smtp\SmtpTransport::executeCommand("MAIL FROM:<hello@noreply.com>
+")
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+71890
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: This is usually a temporary error during hostname resolution and means that the local server did not receive a response from an authoritative server. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+5250735033007500
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+550053505350110003450034500PHP Warning:  require(C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer/../../app/helpers.php): Failed to open stream: No such file or directory in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php on line 71
+
+Warning: require(C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer/../../app/helpers.php): Failed to open stream: No such file or directory in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php on line 71
+PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer/../../app/helpers.php' (include_path='\xampp\php\PEAR') in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php:71
+Stack trace:
+#0 C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php(61): composerRequireded49cfd7cfb846fef435d60412029af('b4e3f29b106af37...', 'C:\\Users\\Dr Ale...')
+#1 C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\autoload.php(7): ComposerAutoloaderInitded49cfd7cfb846fef435d60412029af::getLoader()
+#2 C:\Users\Dr Alert\Documents\dev\coin-desk\artisan(18): require('C:\\Users\\Dr Ale...')
+#3 {main}
+  thrown in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php on line 71
+
+Fatal error: Uncaught Error: Failed opening required 'C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer/../../app/helpers.php' (include_path='\xampp\php\PEAR') in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php:71
+Stack trace:
+#0 C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php(61): composerRequireded49cfd7cfb846fef435d60412029af('b4e3f29b106af37...', 'C:\\Users\\Dr Ale...')
+#1 C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\autoload.php(7): ComposerAutoloaderInitded49cfd7cfb846fef435d60412029af::getLoader()
+#2 C:\Users\Dr Alert\Documents\dev\coin-desk\artisan(18): require('C:\\Users\\Dr Ale...')
+#3 {main}
+  thrown in C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\composer\autoload_real.php on line 71
+
+   Symfony\Component\Mailer\Exception\TransportException 
+
+  Connection could not be established with host "sandbox.smtp.mailtrap.io:2525": stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known.
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:154
+    150▕         $streamContext = stream_context_create($options);
+    151▕ 
+    152▕         $timeout = $this->getTimeout();
+    153▕         set_error_handler(function ($type, $msg) {
+  ➜ 154▕             throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+    155▕         });
+    156▕         try {
+    157▕             $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, \STREAM_CLIENT_CONNECT, $streamContext);
+    158▕         } finally {
+
+  1   [internal]:0
+      Symfony\Component\Mailer\Transport\Smtp\Stream\SocketStream::Symfony\Component\Mailer\Transport\Smtp\Stream\{closure}("stream_socket_client(): php_network_getaddresses: getaddrinfo failed: No such host is known. ", "C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\symfony\mailer\Transport\Smtp\Stream\SocketStream.php:157
+      stream_socket_client("sandbox.smtp.mailtrap.io:2525", "")
+2200525010500
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coin-desk.investments' doesn't exist (SQL: select * from `investments` where `due_date` <= 2023-04-09 14:14:03 and `status` = Active)
+
+  at C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\laravel\framework\src\Illuminate\Database\Connection.php:760
+    756▕         // If an exception occurs when attempting to run a query, we'll format the error
+    757▕         // message to include the bindings with SQL, which will make this exception a
+    758▕         // lot more helpful to the developer instead of just the database's errors.
+    759▕         catch (Exception $e) {
+  ➜ 760▕             throw new QueryException(
+    761▕                 $query, $this->prepareBindings($bindings), $e
+    762▕             );
+    763▕         }
+    764▕     }
+
+  i   A table was not found: You might have forgotten to run your database migrations. 
+      https://laravel.com/docs/master/migrations#running-migrations
+
+  1   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\laravel\framework\src\Illuminate\Database\Connection.php:414
+      PDOException::("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'coin-desk.investments' doesn't exist")
+
+  2   C:\Users\Dr Alert\Documents\dev\coin-desk\vendor\laravel\framework\src\Illuminate\Database\Connection.php:414
+      PDO::prepare("select * from `investments` where `due_date` <= ? and `status` = ?")
+52502200

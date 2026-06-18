@@ -1,618 +1,474 @@
-jQuery(document).ready(function () {
-// bw_testimonial_section
-  var swiper = new Swiper(".bw_testimonial_section .mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    pagination: {
-      el: ".bw_testimonial_section .swiper-pagination",
-      type: "fraction",
-    }
-  });
-// bw_testimonial_section
-
-  var swiper = new Swiper(".bw_testimonial_content_slider .mySwiper", {
-    loop: true, 
-    spaceBetween: 0,
-    slidesPerView: 1,
-  // centeredSlides: true,
-  // navigation: {
-  //   nextEl: ".bw_testimonial_content_slider .swiper-button-next",
-  //   prevEl: ".bw_testimonial_content_slider .swiper-button-prev",
-  // },
-    pagination: {
-      el: ".swiper-pagination",
-      dynamicBullets: true,
-    },
-   // freeMode: true,
-  // watchSlidesProgress: true,
-
-  });
-  var swiper2 = new Swiper(".bw_testimonial_content_slider .mySwiper2", {
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 10,
-    centeredSlides: true,
-    navigation: {
-      nextEl: ".bw_testimonial_content_slider .swiper-button-next",
-      prevEl: ".bw_testimonial_content_slider .swiper-button-prev",
-    },
-    thumbs: {
-      swiper: swiper,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      dynamicBullets: true,
-    },
-    breakpoints: {
-      575: {
-        slidesPerView: 3,
-        spaceBetween: 10,
-      },
-      991: {
-        slidesPerView: 5,
-        spaceBetween: 20,
-      },
-    },
-
-  });
-
-
-
-
-// bw_testimonial_two_section
-
-  // var slider = new Swiper(".bw_testimonial_two_section .mySwiper", {
-  //   loop: true,
-  //   spaceBetween: 0,
-  //   slidesPerView: 1,
-  //   freeMode: false,
-  //   watchSlidesProgress: false,
-  //   pagination: {
-  //     el: ".bw_testimonial_two_section .swiper-pagination",
-  //     dynamicBullets: true,
-  //   },
-  //   centeredSlides: true,
-  //   navigation: {
-  //     nextEl: ".bw_testimonial_two_section .swiper-button-next",
-  //     prevEl: ".bw_testimonial_two_section .swiper-button-prev",
-  //   },
-  // });
-  // var thumbs = new Swiper(".bw_testimonial_two_section .mySwiper2", {
-  //   loop: true,
-  //   slidesPerView: 1,
-  //   spaceBetween: 10,
-  //   centeredSlides: true,
-  //   slideToClickedSlide: true,
-  //   thumbs: {
-  //     swiper: swiper,
-  //   },
-  //   breakpoints: {
-  //     575: {
-  //       slidesPerView: 3,
-  //       spaceBetween: 10,
-  //     },
-  //     991: {
-  //       slidesPerView: 5,
-  //       spaceBetween: 20,
-  //     },
-  //   },
-  // });
-
-
-  // slider.controller.control = thumbs;
-  // thumbs.controller.control = slider;
-
-
-
-  var slider = new Swiper ('.bw_testimonial_two_section .bw_testimonial_two_content', {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: true,
-    loopedSlides: 1,
-    pagination: {
-      el: ".bw_testimonial_two_section .swiper-pagination",
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: '.bw_testimonial_two_section .swiper-button-next',
-      prevEl: '.bw_testimonial_two_section .swiper-button-prev',
-    },
-    breakpoints: {
-      575: {
-        loopedSlides: 3,
-      },
-      991: {
-        loopedSlides: 5,
-      },
-    },
-  });
-
-  var thumbs = new Swiper ('.bw_testimonial_two_section .bw_testimonial_two_img', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    centeredSlides: true,
-    loop: true,
-    slideToClickedSlide: true,
-    breakpoints: {
-      575: {
-        slidesPerView: 3,
-        spaceBetween: 10,
-      },
-      991: {
-        slidesPerView: 5,
-        spaceBetween: 20,
-      },
-    },
-  });
-
-  slider.controller.control = thumbs;
-  thumbs.controller.control = slider;
-
-
-
-
-  // bw_team_slider_section
-  var swiper = new Swiper(".bw_team_slider_section .mySwiper", {
-    spaceBetween: 0,
-    slidesPerView: 1,
-    pagination: {
-      el: ".bw_team_slider_section .swiper-pagination",
-      type: "fraction",
-    },
-    breakpoints: {
-      "576": {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      "992": {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-    },
-  });
-// bw_team_slider_section
-
-  // bw_blog_section
-  var swiper = new Swiper(".bw_blog_section .mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true,
-    navigation: {
-      nextEl: ".bw_blog_section .swiper-button-next",
-      prevEl: ".bw_blog_section .swiper-button-prev",
-    },
-    breakpoints: {
-      575: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      991: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-    },
-  });
-  // bw_blog_section
-   // bw_blog_section_two
-  var swiper = new Swiper(".bw_blog_section_two .mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true,
-    navigation: {
-      nextEl: ".bw_blog_section_two .swiper-button-next",
-      prevEl: ".bw_blog_section_two .swiper-button-prev",
-    },
-    breakpoints: {
-      575: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      767: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      1199: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-    },
-  });
-  // bw_blog_section
-
-  // svg_line_repetar
-  customElements.define(
-    "svg-path-elements",
-    class extends HTMLElement {
-      connectedCallback() {
-        let id = "curve" + this.getAttribute("id");
-        let speed = 1;
-        let position = 0;
-        let elements = Array(~~this.getAttribute("count") || 5)
-        .fill(0)
-        .map((_, idx, arr) => {
-          let inlineFunctionOnEnd = `this.closest('svg').parentNode.onend(${idx})`;
-          let circle = `<svg id="circle${idx}" width="1147" height="412" viewBox="0 0 1147 412" fill="none">
-          <path  d="M0.906792 411.22C53.9068 360.554 222.607 268.42 473.407 305.22C663.907 347.22 1041.91 316.72 1145.91 0.720215" stroke="#2C3333" stroke-opacity="0.15" stroke-width="0.965779"/>
-          </svg>`;
-          position += 1 / (arr.length - 1);
-          return circle;
-        })
-        .join("");
-        this.innerHTML = `<svg width="1147" height="412" viewBox="0 0 1147 412" fill="none">
-        <path id="${id}" d="M0.906792 411.22C53.9068 360.554 222.607 268.42 473.407 305.22C663.907 347.22 1041.91 316.72 1145.91 0.720215" stroke="#2C3333" stroke-opacity="0.15" stroke-width="0.965779"/>
-        </svg>${elements}`;
-      }
-      onend(idx) {
-        let circle = this.querySelector("#circle" + idx);
-      }
-    }
-    );
-  // svg_line_repetar
-
-  // create_page_url_in_body_class
-  var URL = window.location.pathname;
-  var page = URL.split("/").pop().split(".").shift();
-  jQuery("body").addClass(page);
-  // create_page_url_in_body_class
-
-  // login_page
-  jQuery(".bw_login_page_wrap .bw_login_click").click(function () {
-    jQuery(
-      ".bw_regisiter_wrap, .bw_forgot_password_wrap, .bw_reset_password_wrap"
-      ).removeClass("active");
-    jQuery(".bw_login_wrap").addClass("active");
-  });
-  jQuery(".bw_login_page_wrap .bw_register_click").click(function () {
-    jQuery(
-      ".bw_login_wrap, .bw_forgot_password_wrap, .bw_reset_password_wrap"
-      ).removeClass("active");
-    jQuery(".bw_regisiter_wrap").addClass("active");
-  });
-  jQuery(".bw_login_page_wrap .bw_forgot_cilck").click(function () {
-    jQuery(".bw_login_wrap").removeClass("active");
-    jQuery(".bw_forgot_password_wrap").addClass("active");
-  });
-  jQuery(
-    ".bw_login_page_wrap .bw_forgot_password_wrap a.bw_custom_buttom"
-    ).click(function () {
-      jQuery(".bw_forgot_password_wrap").removeClass("active");
-      jQuery(".bw_reset_password_wrap").addClass("active");
-    });
-  // login_page
-
-  // bw_header
-    jQuery(window).scroll(function () {
-      if (jQuery(this).scrollTop() > 0) {
-        jQuery(".bw_header, .bw_header_two").addClass("bw_sticky");
-      } else {
-        jQuery(".bw_header, .bw_header_two").removeClass("bw_sticky");
-      }
-    });
-
-    $(".bw_drop_down_wrap").click(function () {
-      $(".bw_drop_down_wrap .bw_dropdown_menu").slideToggle();
-      $(this).toggleClass("active");
-    });
-
-    jQuery(".bw_mobile_menu_icon a").click(function () {
-      jQuery(".bw_menubar_wrap").addClass("open");
-    });
-    jQuery(".bw_menubar_close").click(function () {
-      jQuery(".bw_menubar_wrap").removeClass("open");
-    });
-    
-    jQuery(".bw_header_two .bw_mobile_menu_icon a").click(function () {
-      jQuery(".bw_header_two").addClass("open");
-    });
-    jQuery(".bw_header_two .bw_mobile_menu_closer").click(function () {
-      jQuery(".bw_header_two").removeClass("open");
-    });
-
-  // bw_header
-
-    
-
-
-    jQuery("ul.tabs li").click(function () {
-      var tab_id = jQuery(this).attr("data-tab");
-
-      jQuery("ul.tabs li").removeClass("current");
-      jQuery(".tab-content").removeClass("current");
-
-      jQuery(this).addClass("current");
-      jQuery("#" + tab_id).addClass("current");
-    });
-
-    //===== start accordian js =====//
-
-    jQuery("body").on("click", ".accordion .accordion-tabs", function () {
-      console.log('fgf');
-      jQuery(".accordion-content").slideUp(),
-      jQuery(this).hasClass("acco-active")
-      ? (jQuery(this).next(".accordion-content").slideUp(),
-        jQuery(this).removeClass("acco-active"))
-       //jQuery('.accordion-item').removeClass('bw-active-tab'),
-        //jQuery(this).parent().addClass('bw-active-tab'),
-      : (jQuery(".accordion .accordion-tabs").removeClass("acco-active"),
-        jQuery('.accordion-item').removeClass('bw-active-tab'),
-        jQuery(this).parent().addClass('bw-active-tab'),
-        jQuery(this).addClass("acco-active"),
-        jQuery(this).next(".accordion-content").slideDown());
-      jQuery(".accordion .accordion-tabs h5 span.accordion_icon").text("add");
-      jQuery(
-        ".accordion .accordion-tabs.acco-active h5 span.accordion_icon"
-        ).text("remove");
-
-      jQuery(".bw_faq_page_section_2 .accordion .accordion-tabs h5 span.accordion_icon").text("expand_more");
-      jQuery(
-        ".bw_faq_page_section_2 .accordion .accordion-tabs.acco-active h5 span.accordion_icon"
-        ).text("expand_less");
-
-    });
-
-    //===== End accordian js =====//
-
-    //===== start accordian add class js =====//
-
-    jQuery(".accordion-tabs.acco-active").parent().addClass('bw-active-tab');
-
-    //===== End accordian add class js =====//
-
-
-
-    $(".bw_custom_popup").magnificPopup({
-      type: "inline",
-      preloader: false,
-      focus: "#name",
-    });
-
-
-    jQuery(document).on("click", ".bw_card_popup .bw_custom_buttom", function () {
-      jQuery("button.mfp-close").click();
-      jQuery(".bw_hero_custom_card > .creditcard.flipped").click();
-    });
-
-    $(".counter").counterUp({
-      delay: 10,
-      time: 500,
-    });
-    $(".counter").addClass("animated fadeInDownBig");
-    $(".bw_hero_card h3").addClass("animated fadeIn");
-
-    //===== start all animation js =====//
-
-    AOS.init({
-      once: true,
-    });
-
-    //===== End all animation js =====//
-    //===== start ripples js =====//
-    jQuery(".bw_ripples, .bw_main_body").ripples({
-      resolution: 512,
-      dropRadius: 15,
-      perturbance: 50,
-    });
-
-    var CurrentUrl = document.URL;
-    var CurrentUrlEnd = CurrentUrl.split("/").filter(Boolean).pop();
-    console.log(CurrentUrlEnd);
-    $(".bw_all_menu li a").each(function () {
-      var ThisUrl = $(this).attr("href");
-      var ThisUrlEnd = ThisUrl.split("/").filter(Boolean).pop();
-
-      if (ThisUrlEnd == CurrentUrlEnd) {
-        $(this).closest("li").addClass("current_page_active");
-      }
-    });
-  });
-  //===== End ripples js =====//
-
-
-$(document).ready(function () {
-  // start_after_and_before_slider
-  // start_after_and_before_slider
-  jQuery(".popup-vimeo .play").hide();
-  jQuery(".popup-vimeo").click(function () {
-    if (jQuery("video").get(0).paused) {
-      jQuery("video").get(0).play();
-      jQuery(".popup-vimeo .playpause").fadeOut();
-      jQuery(".popup-vimeo .play").fadeIn();
-    } else {
-      jQuery("video").get(0).pause();
-      jQuery(".popup-vimeo .playpause").fadeIn();
-      jQuery(".popup-vimeo .play").fadeOut();
-    }
-  });
-
-  let active = false;
-
-  document
-  .querySelector(".scroller")
-  .addEventListener("mousedown", function () {
-    active = true;
-    document.querySelector(".scroller").classList.add("scrolling");
-  });
-  document.body.addEventListener("mouseup", function () {
-    active = false;
-    document.querySelector(".scroller").classList.remove("scrolling");
-  });
-  document.body.addEventListener("mouseleave", function () {
-    active = false;
-    document.querySelector(".scroller").classList.remove("scrolling");
-  });
-
-  document.body.addEventListener("mousemove", function (e) {
-    if (!active) return;
-    let x = e.pageX;
-    x -= document
-    .querySelector(".bw_video_Slider")
-    .getBoundingClientRect().left;
-    scrollIt(x);
-  });
-
-  function scrollIt(x) {
-    let transform = Math.max(
-      0,
-      Math.min(x, document.querySelector(".bw_video_Slider").offsetWidth)
-      );
-    document.querySelector(".after").style.width = transform + "px";
-    document.querySelector(".scroller").style.left = transform - 16 + "px";
-  }
-
-  scrollIt("50%");
-
-  document
-  .querySelector(".scroller")
-  .addEventListener("touchstart", function () {
-    active = true;
-    document.querySelector(".scroller").classList.add("scrolling");
-  });
-
-  document.body.addEventListener("touchend", function () {
-    active = false;
-    document.querySelector(".scroller").classList.remove("scrolling");
-  });
-
-  document.body.addEventListener("touchcancel", function () {
-    active = false;
-    document.querySelector(".scroller").classList.remove("scrolling");
-  });
-
-  // end_after_and_before_slider
-  // end_after_and_before_slider
-
-  // Start_bw_home_hero_section_cred
-  // Start_bw_home_hero_section_cred
-  window.onload = function () {
-    const name = document.getElementById("name");
-    const cardnumber = document.getElementById("cardnumber");
-    const expirationdate = document.getElementById("expirationdate");
-    const securitycode = document.getElementById("securitycode");
-    let cctype = null;
-
-    //Mask the Credit Card Number Input
-    var cardnumber_mask = new IMask(cardnumber, {
-      mask: [
-      {
-        mask: "0000 0000 0000 0000",
-        regex: "^(?:5[0678]\\d{0,2}|6304|67\\d{0,2})\\d{0,12}",
-        cardtype: "maestro",
-      },
-      {
-        mask: "0000 0000 0000 0000",
-        regex: "^4\\d{0,15}",
-        cardtype: "visa",
-      },
-      ],
-      dispatch: function (appended, dynamicMasked) {
-        var number = (dynamicMasked.value + appended).replace(/\D/g, "");
-        for (var i = 0; i < dynamicMasked.compiledMasks.length; i++) {
-          let re = new RegExp(dynamicMasked.compiledMasks[i].regex);
-          if (number.match(re) != null) {
-            return dynamicMasked.compiledMasks[i];
-          }
+(function($) {
+	
+    "use strict";
+
+    $(window).on("load", function() {
+		
+		/* ----------------------------------------------------------- */
+		/*  BITCOIN PRELOADER
+		/* ----------------------------------------------------------- */
+		
+        if ($("#preloader")[0]) {
+            $("#preloader").delay(500).fadeTo(500, 0, function() {
+                $(this).remove();
+            });
         }
-      },
+		
     });
 
-    //Mask the Expiration Date
-    var expirationdate_mask = new IMask(expirationdate, {
-      mask: "MM{/}YY",
-      groups: {
-        YY: new IMask.MaskedPattern.Group.Range([0, 99]),
-        MM: new IMask.MaskedPattern.Group.Range([1, 12]),
-      },
-    });
+    $(document).ready(function() {
+		
+		/* ----------------------------------------------------------- */
+		/*  REMOVE # FROM URL
+		/* ----------------------------------------------------------- */
+		
+		$("a[href='#']").on("click", (function(e) {
+			e.preventDefault();
+		}));
+		
+		/* ----------------------------------------------------------- */
+		/*  FIXED HEADER ON SCROLL
+		/* ----------------------------------------------------------- */
+		
+		var navsite = $("#site-navigation");
+		if (navsite.length) {
+			var offset = $("#site-navigation").offset().top;
+		}
+        $(document).scroll(function() {
+            var scrollTop = $(document).scrollTop();
+            if (scrollTop > offset) {
+                $("#site-navigation").addClass("fixed");
 
-    //Mask the security code
-    var securitycode_mask = new IMask(securitycode, {
-      mask: "0000",
-    });
+            } else {
+                $("#site-navigation").removeClass("fixed");
+            }
+        });
+		
+		/* ----------------------------------------------------------- */
+		/*  ADD HEIGHT TO NAVBAR IN MOBILE DEVICES
+		/* ----------------------------------------------------------- */
+		
+		$(".navbar-collapse").css({ maxHeight: $(window).height() - $(".navbar-header").height() + "px" });
+		
+		/* ----------------------------------------------------------- */
+		/*  BOOTSTRAP CAROUSEL
+		/* ----------------------------------------------------------- */
+		
+		$("#main-slide").carousel({
+			pause: true,
+			interval: 100000,
+		});
+		
+		/* ----------------------------------------------------------- */
+		/*  BACK TO TOP
+		/* ----------------------------------------------------------- */
+		
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 800) {
+                $("#back-to-top").addClass("show-back-to-top");
+            } else {
+                $("#back-to-top").removeClass("show-back-to-top");
+            }
+        });
+        $("#back-to-top").on("click", function() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+		
+		/* ----------------------------------------------------------- */
+		/*  TESTIMONIAL CAROUSEL
+		/* ----------------------------------------------------------- */
+		
+		$("#carousel-testimonials").carousel({
+			wrap:true,
+			pause: true,
+			interval: 20000
+		});
+		
+		/* ----------------------------------------------------------- */
+		/*  REFRESH 503 PAGE
+		/* ----------------------------------------------------------- */
+		
+		$("#refresh").on("click", function() {
+			location.reload();
+		});
+		
+		/* ----------------------------------------------------------- */
+		/*  TESTIMONIAL CAROUSEL TOUCH OPTIMIZED [ MAIN SLIDER ]
+		/* ----------------------------------------------------------- */
 
-    // CREDIT CARD IMAGE JS
-    document.querySelector(".preload").classList.remove("preload");
-    document
-    .querySelector(".creditcard")
-    .addEventListener("click", function () {
-      if (this.classList.contains("flipped")) {
-        this.classList.remove("flipped");
-      } else {
-        this.classList.add("flipped");
-      }
-    });
+        var cr = $("#main-slide");
+        cr.on("touchstart", function(event) {
+            var xClick = event.originalEvent.touches[0].pageX;
+            $(this).one("touchmove", function(event) {
+                var xMove = event.originalEvent.touches[0].pageX;
+                if (Math.floor(xClick - xMove) > 5) {
+                    cr.carousel("next");
+                } else if (Math.floor(xClick - xMove) < -5) {
+                    cr.carousel("prev");
+                }
+            });
+            cr.on("touchend", function() {
+                $(this).off("touchmove");
+            });
+        });
+		
+		/* ----------------------------------------------------------- */
+		/*  TESTIMONIAL CAROUSEL TOUCH OPTIMIZED [ CAROUSEL TESTIMONIALS ]
+		/* ----------------------------------------------------------- */
+		
+		var ct = $("#carousel-testimonials");
+        ct.on("touchstart", function(event) {
+            var xClick = event.originalEvent.touches[0].pageX;
+            $(this).one("touchmove", function(event) {
+                var xMove = event.originalEvent.touches[0].pageX;
+                if (Math.floor(xClick - xMove) > 5) {
+                    ct.carousel("next");
+                } else if (Math.floor(xClick - xMove) < -5) {
+                    ct.carousel("prev");
+                }
+            });
+            ct.on("touchend", function() {
+                $(this).off("touchmove");
+            });
+        });
+		
+		/* ----------------------------------------------------------- */
+		/*  WIDGET DATA FROM BITCOIN.COM
+		/* ----------------------------------------------------------- */
+		
+		(function(b, i, t, C, O, I, N) {
+			window.addEventListener("load", function() {
+				if (b.getElementById(C)) return;
+				I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+				I.src = t;
+				I.id = C;
+				N.parentNode.insertBefore(I, N);
+			}, false)
+		})(document, "script", "https://widgets.bitcoin.com/widget.js", "btcwdgt");
+		
+		/* ----------------------------------------------------------- */
+		/*  VARIABLES FOR SELECT INPUT AND BITCOIN CALCULATOR FORM
+		/* ----------------------------------------------------------- */
+		
+		var userAgent = navigator.userAgent.toLowerCase(),
+        plugins = {
+            selectFilter: $("#currency-select"),
+            btcCalculator: $("#bitcoin-calculator"),
+        };
+		
+		
+		/* ----------------------------------------------------------- */
+		/*  REPLACE OLD SELECT IN BITCOIN CALCULATOR FORM
+		/* ----------------------------------------------------------- */
 
-    //On Input Change Events
-    name.addEventListener("input", function () {
-      if (name.value.length == 0) {
-        document.getElementById("svgname").innerHTML = "Manie Heyon";
-        document.getElementById("svgnameback").innerHTML = "Manie Heyon";
-      } else {
-        document.getElementById("svgname").innerHTML = this.value;
-        document.getElementById("svgnameback").innerHTML = this.value;
-      }
-    });
+        if (plugins.selectFilter.length) {
+            for (var i = 0; i < plugins.selectFilter.length; i++) {
+                var select = $(plugins.selectFilter[i]);
+                select.select2({
+                    placeholder: select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
+                    minimumResultsForSearch: select.attr("data-minimum-results-search") ? select.attr("data-minimum-results-search") : 10,
+                    maximumSelectionSize: 3,
+                    dropdownCssClass: select.attr("data-dropdown-class") ? select.attr("data-dropdown-class") : ""
+                });
+            }
+        }
+		
+		/* ----------------------------------------------------------- */
+		/*  BITCOIN CALCULATOR [ WWW.BLOCKCHAIN.INFO API ]
+		/* ----------------------------------------------------------- */
+		
+        if (plugins.btcCalculator.length) {
 
-    cardnumber_mask.on("accept", function () {
-      if (cardnumber_mask.value.length == 0) {
-        document.getElementById("svgnumber").innerHTML = "0123 4567 8910 1112";
-      } else {
-        document.getElementById("svgnumber").innerHTML = cardnumber_mask.value;
-      }
-    });
+            $.getJSON("https://blockchain.info/ticker", function(btcJsonData) {
+				var currencyList = [];
+				var index = 0;
 
-    expirationdate_mask.on("accept", function () {
-      if (expirationdate_mask.value.length == 0) {
-        document.getElementById("svgexpire").innerHTML = "01/23";
-      } else {
-        document.getElementById("svgexpire").innerHTML =
-        expirationdate_mask.value;
-      }
-    });
+				for (var currency in btcJsonData) {
+					currencyList.push({
+						"id": index,
+						"text": currency
+					});
+					index++;
+				}
 
-    securitycode_mask.on("accept", function () {
-      if (securitycode_mask.value.length == 0) {
-        document.getElementById("svgsecurity").innerHTML = "012";
-      } else {
-        document.getElementById("svgsecurity").innerHTML =
-        securitycode_mask.value;
-      }
-    });
+				for (var i = 0; i < plugins.btcCalculator.length; i++) {
+					var btcForm = $(plugins.btcCalculator[i]),
+						btcFormInput = $(btcForm.find('[name="btc-calculator-value"]')),
+						btcFormOutput = $(btcForm.find('[name="btc-calculator-result"]')),
+						btcFormCurrencySelect = $(btcForm.find('[name="btc-calculator-currency"]'));
 
-    //On Focus Events
-    name.addEventListener("focus", function () {
-      document.querySelector(".creditcard").classList.remove("flipped");
-    });
+					btcFormCurrencySelect.select2({
+						placeholder: btcFormCurrencySelect.attr("data-placeholder") ? btcFormCurrencySelect.attr("data-placeholder") : false,
+						minimumResultsForSearch: btcFormCurrencySelect.attr("data-minimum-results-search") ? btcFormCurrencySelect.attr("data-minimum-results-search") : 50,
+						maximumSelectionSize: 3,
+						dropdownCssClass: btcFormCurrencySelect.attr("data-dropdown-class") ? btcFormCurrencySelect.attr("data-dropdown-class") : '',
+						data: currencyList
+					});
 
-    cardnumber.addEventListener("focus", function () {
-      document.querySelector(".creditcard").classList.remove("flipped");
-    });
+					if (btcFormInput.length && btcFormOutput.length) {
+						// BTC => Currency
+						(function(btcFormInput, btcFormOutput, btcFormCurrencySelect) {
+							var lastChanged = 'btc';
 
-    expirationdate.addEventListener("focus", function () {
-      document.querySelector(".creditcard").classList.remove("flipped");
-    });
+							btcFormInput.on('input', function() {
+								// store current positions in variables
+								var selectionStart = this.selectionStart,
+									selectionEnd = this.selectionEnd;
 
-    securitycode.addEventListener("focus", function () {
-      document.querySelector(".creditcard").classList.add("flipped");
-    });
-  };
+								this.value = toCryptoCurrencyFormat(this.value);
 
-  // end_bw_home_hero_section_cred
-  // end_bw_home_hero_section_cred
+								// restore cursor position
+								this.setSelectionRange(selectionStart, selectionEnd);
 
+								btcFormOutput.val(toCurrencyFormat('' + btcJsonData[btcFormCurrencySelect.select2('data')[0].text]["buy"] * this.value));
+								lastChanged = 'btc';
+							});
 
+							// Currency => BTC
+							btcFormOutput.on('input', function() {
+								// store current positions in variables
+								var selectionStart = this.selectionStart,
+									selectionEnd = this.selectionEnd;
 
-  
+								this.value = toCurrencyFormat(this.value);
 
+								// restore cursor position
+								this.setSelectionRange(selectionStart, selectionEnd);
 
+								btcFormInput.val(toCryptoCurrencyFormat('' + this.value / btcJsonData[btcFormCurrencySelect.select2('data')[0].text]["sell"]));
+								lastChanged = 'currency';
+							});
 
+							btcFormInput.trigger('input');
+							btcFormOutput.blur();
 
+							btcFormCurrencySelect.on('change', function() {
+								if (lastChanged === 'btc') {
+									btcFormOutput.val(toCurrencyFormat('' + btcJsonData[btcFormCurrencySelect.select2('data')[0].text]["buy"] * btcFormInput.val()));
+								} else {
+									btcFormInput.val(toCryptoCurrencyFormat('' + btcFormOutput.val() / btcJsonData[btcFormCurrencySelect.select2('data')[0].text]["sell"]));
+								}
+							});
+						})(btcFormInput, btcFormOutput, btcFormCurrencySelect);
+					}
+				}
+			})
+			.fail(function() {
+				console.log('Error while fetching data from https://blockchain.info/ticker');
+			});
+		}
 
+		function toCurrencyFormat(stringValue) {
+			var value = parseFloat(stringValue.replace(/[^\d.]/g, '')).toFixed(2);
+			return $.isNumeric(value) ? value : 0;
+		}
 
+		function toCryptoCurrencyFormat(stringValue) {
+			var value = stringValue.replace(/[^\d.]/g, '');
+			return $.isNumeric(value) ? value : 0;
+		}
 
-  
-});
+		/* ----------------------------------------------------------- */
+		/*  PRICING TABLES SWITCH ANIMATION
+		/* ----------------------------------------------------------- */
+		
+		checkScrolling($(".pricing-body"));
+		$(window).on("resize", function() {
+			window.requestAnimationFrame(function() {
+				checkScrolling($(".pricing-body"))
+			});
+		});
+		$(".pricing-body").on("scroll", function() {
+			var selected = $(this);
+			window.requestAnimationFrame(function() {
+				checkScrolling(selected)
+			});
+		});
+
+		function checkScrolling(tables) {
+			tables.each(function() {
+				var table = $(this),
+					totalTableWidth = parseInt(table.children(".pricing-features").width(),10 ),
+					tableViewport = parseInt(table.width(),10 );
+				if (table.scrollLeft() >= totalTableWidth - tableViewport - 1) {
+					table.parent("li").addClass("is-ended");
+				} else {
+					table.parent("li").removeClass("is-ended");
+				}
+			});
+		}
+
+		bouncy_filter($(".pricing-container"));
+
+		function bouncy_filter(container) {
+			container.each(function() {
+				var pricing_table = $(this);
+				var filter_list_container = pricing_table.children(".pricing-switcher"),
+					filter_radios = filter_list_container.find("input[type='radio']"),
+					pricing_table_wrapper = pricing_table.find(".pricing-wrapper");
+
+				var table_elements = {};
+				filter_radios.each(function() {
+					var filter_type = $(this).val();
+					table_elements[filter_type] = pricing_table_wrapper.find("li[data-type='" + filter_type + "']");
+				});
+
+				//detect input change event
+				filter_radios.on("change", function(event) {
+					event.preventDefault();
+					//detect which radio input item was checked
+					var selected_filter = $(event.target).val();
+
+					//give higher z-index to the pricing table items selected by the radio input
+					show_selected_items(table_elements[selected_filter]);
+
+					//rotate each pricing-wrapper 
+					//at the end of the animation hide the not-selected pricing tables and rotate back the .pricing-wrapper
+
+					if (!Modernizr.cssanimations) {
+						hide_not_selected_items(table_elements, selected_filter);
+						pricing_table_wrapper.removeClass("is-switched");
+					} else {
+						pricing_table_wrapper.addClass("is-switched").eq(0).one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
+							hide_not_selected_items(table_elements, selected_filter);
+							pricing_table_wrapper.removeClass("is-switched");
+							//change rotation direction if .pricing-list has the .bounce-invert class
+							if (pricing_table.find(".pricing-list").hasClass("bounce-invert")) pricing_table_wrapper.toggleClass("reverse-animation");
+						});
+					}
+				});
+			});
+		}
+
+		function show_selected_items(selected_elements) {
+			selected_elements.addClass("is-selected");
+		}
+
+		function hide_not_selected_items(table_containers, filter) {
+			$.each(table_containers, function(key, value) {
+				if (key != filter) {
+					$(this).removeClass("is-visible is-selected").addClass("is-hidden");
+
+				} else {
+					$(this).addClass("is-visible").removeClass("is-hidden is-selected");
+				}
+			});
+		}
+			
+		/* ----------------------------------------------------------- */
+		/*  VIDEO POP UP
+		/* ----------------------------------------------------------- */
+		jQuery(".mfp-youtube").magnificPopup({
+			type: "iframe",
+			mainClass: "mfp-fade",
+			removalDelay: 0,
+			preloader: false,
+			fixedContentPos: false,
+			iframe: {
+				patterns: {
+					youtube: {
+						src: "https://youtube.com/embed/%id%?autoplay=1&rel=0"
+					},
+				}
+			}
+		});
+		
+		/* ----------------------------------------------------------- */
+		/*  SITE SEARCH
+		/* ----------------------------------------------------------- */
+		
+		$(".navbar-nav .fa-search").on("click", function() {
+			//$("html, body").animate({ }, "slow");
+			$(".site-search .container").toggleClass("open");
+		})
+
+		$(".site-search .close").on("click", function() {
+			$(".site-search .container").removeClass("open");;
+		})
+		
+		/* ----------------------------------------------------------- */
+		/*  AJAX CONTACT FORM
+		/* ----------------------------------------------------------- */
+		 
+        $(".form-contact").on("submit", function() {
+            $(".output_message").text("Loading...");
+
+            var form = $(this);
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),
+                data: form.serialize(),
+                success: function(result) {
+                    if (result == "success") {
+						$(".form-contact").find(".output_message_holder").addClass("d-block");
+						$(".form-contact").find(".output_message").addClass("success");
+                        $(".output_message").text("Your message has been sent successfully!");
+                    } else {
+                        $(".form-contact").find(".output_message_holder").addClass("d-block");
+						$(".form-contact").find(".output_message").addClass("error");
+                        $(".output_message").text("Error while Sending email! try later");
+                    }
+                }
+            });
+
+            return false;
+        });
+		
+		/* ----------------------------------------------------------- */
+		/*  NUMBER SPINNER HORIZONTAL [ QUANTITY IN SHOPPING CART PAGE ]
+		/* ----------------------------------------------------------- */
+		
+		var fieldName;
+		// This button will increment the value
+		$(".qtyplus").on("click", function(e){
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			fieldName = $(this).attr("data-field");
+			// Get its current value
+			var currentVal = parseInt($("input[name="+fieldName+"]").val(),10 );
+			// If is not undefined
+			if (!isNaN(currentVal)) {
+				// Increment
+				$("input[name="+fieldName+"]").val(currentVal + 1);
+			} else {
+				// Otherwise put a 0 there
+				$("input[name="+fieldName+"]").val(0);
+			}
+		});
+		// This button will decrement the value till 0
+		$(".qtyminus").on("click", function(e) {
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			fieldName = $(this).attr("data-field");
+			// Get its current value
+			var currentVal = parseInt($("input[name="+fieldName+"]").val(),10 );
+			// If it isn't undefined or its greater than 0
+			if (!isNaN(currentVal) && currentVal > 1) {
+				// Decrement one
+				$("input[name="+fieldName+"]").val(currentVal - 1);
+			} else if (currentVal == 0) {
+				$("input[name="+fieldName+"]").val(1);
+			}
+			
+			else {
+				// Otherwise put a 1 there
+				$("input[name="+fieldName+"]").val(1);
+			}
+		});
+		
+		/* ----------------------------------------------------------- */
+		/*  TOOLTIP
+		/* ----------------------------------------------------------- */
+		
+		$("[data-toggle='tooltip']").tooltip()
+
+	});
+		
+		/* ----------------------------------------------------------- */
+
+})(jQuery);

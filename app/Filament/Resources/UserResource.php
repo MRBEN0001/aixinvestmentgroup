@@ -5,81 +5,45 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
+use Livewire\Component;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Facades\Filament;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\Checkbox;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\Rules\Password;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Filament\Resources\UserResource\RelationManagers\AccountsRelationManager;
-use App\Filament\Resources\UserResource\RelationManagers\AccountssRelationManager;
-use App\Filament\Resources\UserResource\RelationManagers\DepositsRelationManager;
-use App\Filament\Resources\UserResource\RelationManagers\TransactionsRelationManager;
-use App\Filament\Resources\UserResource\RelationManagers\WithdrawalsRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\AccountRelationManager;
+use Filament\Forms\Components\RelationshipRepeater;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $navigationGroup = 'Manage User';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('profile_image')
-                    ->image(),
-                Forms\Components\TextInput::make('username')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->maxLength(15)
-                    ->default(null),
-                Forms\Components\Textarea::make('address')
-                    ->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('dob'),
-                Forms\Components\TextInput::make('country')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('city_or_state')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('postal_code')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('ip_address')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('role')
-                    ->required(),
-                Forms\Components\TextInput::make('is_active')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
-                Forms\Components\TextInput::make('is_notification_enable')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
-                Forms\Components\TextInput::make('is_two_factor_auth_enable')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
+                Forms\Components\TextInput::make('name')->disabled(fn (Component $livewire): bool => $livewire instanceof EditRecord),
+                Forms\Components\TextInput::make('email')->disabled(fn (Component $livewire): bool => $livewire instanceof EditRecord),
+                Forms\Components\TextInput::make('password')->password()->disabled(fn (Component $livewire): bool => $livewire instanceof EditRecord),
             ]);
     }
 
@@ -87,70 +51,36 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\ImageColumn::make('profile_image'),
-                Tables\Columns\TextColumn::make('username')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('dob')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('country')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('city_or_state')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('postal_code')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('ip_address')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('role'),
-                Tables\Columns\TextColumn::make('is_active')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('is_notification_enable')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('is_two_factor_auth_enable')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->searchable(),
+                Tables\Columns\TextColumn::make('ip_address'),
+                Tables\Columns\TextColumn::make('referral_link')->label('Referral Code')->searchable(),
+
+            ])->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            TransactionsRelationManager::class,
-            AccountsRelationManager::class,
-            DepositsRelationManager::class,
-            WithdrawalsRelationManager::class
+            RelationManagers\AccountRelationManager::class,
+            RelationManagers\CoinsRelationManager::class,
+            RelationManagers\InvestmentsRelationManager::class,
+            RelationManagers\DepositsRelationManager::class
         ];
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return false;
     }
 
     public static function getPages(): array
@@ -159,7 +89,11 @@ class UserResource extends Resource
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
-            'view' => Pages\ViewUser::route('/{record}/view'),
         ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email'];
     }
 }

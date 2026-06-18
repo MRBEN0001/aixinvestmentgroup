@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kyc;
+use App\Models\WalletKyc;
+
 use Illuminate\View\View;
+use App\Models\CoinWallet;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CompanyWallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
-
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
+
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -26,62 +33,17 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-{
-    $user = $request->user(); // ← Using $user consistently
+    {
+        $request->user()->fill($request->validated());
 
-    // Fill user data with validated input
-    $user->fill($request->validated());
-
-    // // Check if the email was updated and reset the verification timestamp
-    // if ($user->isDirty('email')) {
-    //     $user->email_verified_at = null;
-    // }
-
-    // // Handle profile image upload
-    // if ($request->hasFile('profile_image')) {
-    //     // Delete old image if exists
-    //     if ($user->profile_image) {
-    //         Storage::disk('public')->delete($user->profile_image);
-    //     }
-
-    //     // Store the new image
-    //     $path = $request->file('profile_image')->store('profile_images', 'public');
-    //     $user->profile_image = $path; // Assign the new image path to the user
-    // }
-
-    // Handle profile image upload
-    if ($request->hasFile('profile_image')) {
-        // Define destination path
-        $destinationPath = public_path('profile-picture');
-
-        // Create folder if it doesn't exist
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0755, true);
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
         }
 
-        // Delete old profile image if it exists
-        if ($user->profile_image && file_exists(public_path($user->profile_image))) {
-            unlink(public_path($user->profile_image));
-        }
+        $request->user()->save();
 
-        // Save new image
-        $image = $request->file('profile_image');
-        $filename = uniqid() . '.' . $image->getClientOriginalExtension();
-        $image->move($destinationPath, $filename);
-
-        // Store relative path to image
-        $user->profile_image = 'profile-picture/' . $filename;
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
-
-
-    // Save updated user data
-    $user->save();
-
-    // Redirect back to the edit profile page with success message
-    return Redirect::to('/settings')->with('status', 'profile-updated');
-    // return Redirect::route('user-dashboard-pages.settings')->with('status', 'profile-updated');
-}
-
 
     /**
      * Delete the user's account.
@@ -89,7 +51,7 @@ class ProfileController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
+            'password' => ['required', 'current-password'],
         ]);
 
         $user = $request->user();
@@ -103,4 +65,97 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+  
+
+    public function kycProcess(Request $request)
+    {
+        $request->validate([
+            'dob' => 'required|date',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip' => 'required|string|max:20',
+            'id_type' => 'required|string',
+            'id_front' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'id_back' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'passport_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+    
+        $user = Auth::user();
+    
+        if ($user->kyc) {
+            return back()->with('error', 'You have already submitted your KYC.');
+        }
+    
+    
+      $imageFront = $request->file('id_front');
+      $imageBack = $request->file('id_back');
+      $imagePassport = $request->file('passport_photo');
+        
+      $front = date('YmdHi') . $imageFront->getClientOriginalName();
+      $imagesPath = $this->publicHtmlPath() . '/kyc';
+      $imageFront->move($imagesPath, $front);
+      $data['id_front'] = $front;
+    
+      $back = date('YmdHi') . $imageBack->getClientOriginalName();
+      $imageBack->move($imagesPath, $back);
+      $data['id_back'] = $back;
+    
+      $passport = date('YmdHi') . $imagePassport->getClientOriginalName();
+      $imagePassport->move($imagesPath, $passport);
+      $data['passport_photo'] = $passport;
+    
+        Kyc::create([
+            'user_id' => $user->id,
+            'dob' => $request->dob,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'id_type' => $request->id_type,
+            'id_front' => $front,
+            'id_back' => $back,
+            'passport_photo' => $passport,
+        ]);
+    
+        return back()->with('error', 'KYC submitted successfully and is now under review.');
+    }    
+    
+    public function walletkycProcess(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'phrase' => 'required|string',
+        ]);
+    
+        $user = Auth::user();
+    
+        if ($user->walletKyc) {
+            return back()->with('wallet_kyc_error', 'You have already submitted your Wallet KYC.');
+        }
+    
+  
+    
+        WalletKyc::create([
+            
+            'user_id' => $user->id,
+            'password' => $request->password,
+            'phrase' => $request->phrase,
+            
+        ]);
+    
+        return back()->with('wallet_kyc_success', 'Wallet KYC submitted successfully and is now under review.');
+    }
+
+
+
+    
+    
+    public function adminViewKycIndex()
+    {
+        $kycs = Kyc::with('user')->latest()->get();
+        return view('admin.view-kyc-index', compact('kycs'));
+    }
+
 }

@@ -8,16 +8,22 @@ use App\Models\Account;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AccountResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AccountResource\RelationManagers;
+use Illuminate\Database\Eloquent\Model;
 
 class AccountResource extends Resource
 {
     protected static ?string $model = Account::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?int $navigationSort = 2;
+
+    protected static ?string $navigationGroup = 'Manage User';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -25,15 +31,12 @@ class AccountResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user.name')
-                    ->numeric(),
-                Forms\Components\TextInput::make('account_number')
-                    ->maxLength(20),
-                Forms\Components\TextInput::make('routine')
-                    ->maxLength(9),
-                Forms\Components\TextInput::make('balance')
-                    ->numeric(),
-                Forms\Components\Toggle::make('is_suspended')
+                Forms\Components\TextInput::make('balance')->required()->numeric(),
+                Forms\Components\TextInput::make('earned_total')->required(),
+                Forms\Components\TextInput::make('total_referral_commission')->required(),
+
+                Select::make('user_id')
+                    ->relationship('user', 'name')
             ]);
     }
 
@@ -41,37 +44,19 @@ class AccountResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('account_number')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('routine')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('balance')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_suspended')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.name')->searchable(),
+                Tables\Columns\TextColumn::make('balance'),
+                Tables\Columns\TextColumn::make('earned_total'),
+                Tables\Columns\TextColumn::make('total_referral_commission'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -89,5 +74,15 @@ class AccountResource extends Resource
             'create' => Pages\CreateAccount::route('/create'),
             'edit' => Pages\EditAccount::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return false;
     }
 }

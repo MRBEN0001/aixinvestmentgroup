@@ -23,6 +23,9 @@
                             <p style="margin: 10px 0;"><strong>Email:</strong> {{ $data['email'] }}</p>
                             <p style="margin: 10px 0;"><strong>Account Number:</strong> {{ $data['account_number'] }}</p>
                             <p style="margin: 10px 0;"><strong>Amount:</strong> ${{ number_format($data['amount'], 2) }}</p>
+                            @if (!empty($data['coin']))
+                                <p style="margin: 10px 0;"><strong>Coin:</strong> {{ $data['coin'] }}</p>
+                            @endif
                             <p style="margin: 10px 0;"><strong>Transaction Hash:</strong> {{ $data['reference'] }}</p>
 
                             <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">

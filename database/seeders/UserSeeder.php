@@ -3,9 +3,15 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Account;
+use App\Models\Coin;
+use App\Models\CoinWallet;
+use App\Models\Investment;
+use App\Models\Profile;
+use App\Models\ReferralCommission;
+use App\Models\Withdrawal;
+use Database\Factories\InvestmentFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -16,26 +22,34 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-       // Creating 2 users
-    foreach (range(1, 2) as $index) {
-        User::create([
-            'name' => 'User' . $index, // Example: User 1, User 2, etc.
-            'username' => 'user_' . $index,
-            'email' => 'user' . $index . '@example.com',
-            'password' => Hash::make('password123'),
-            'phone' => '1234567890',
-            'address' => '123 Main St',
-            'dob' => '1990-01-01',
-            'country' => 'USA',
-            'city_or_state' => 'California',
-            'postal_code' => '90001',
-            'ip_address' => '192.168.0.1',
-            'role' => 'admin',  // You can change this to 'customer' or 'admin' randomly if needed
-            'is_active' => true,
-            'is_notification_enable' => true,
-            'is_two_factor_auth_enable' => false,
-            'profile_image' => null,
-        ]);
+        // User::factory()->count(1)
+        //     ->has(Account::factory(), 'account')
+        //     ->has(Investment::factory(), 'investments')
+        //     ->has(Withdrawal::factory()->count(1), 'withdrawals')
+        //     ->has(ReferralCommission::factory(), 'commissions')
+        //     ->has(Coin::factory(), 'coins')
+        //     ->create();
+
+        User::factory(1)->create()->each(function ($user) {
+            $account = Account::factory(1)->create([
+                'user_id' => $user->id,
+            ]);
+
+            $investment = Investment::factory(3)->create([
+                'user_id' => $user->id,
+            ]);
+
+            $withdrawal = Withdrawal::factory([
+                'user_id' => $user->id,
+            ]);
+
+            $commission = ReferralCommission::factory(3)->create([
+                'user_id' => $user->id,
+            ]);
+
+            $coin = Coin::factory(1)->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
-}
 }

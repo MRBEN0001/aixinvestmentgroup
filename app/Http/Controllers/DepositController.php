@@ -77,7 +77,7 @@ class DepositController extends Controller
             ];
 
             // Send email to admin
-            Mail::to('vaultfinance6@gmail.com')->send(new DepositAdminNotificationMial($data));
+            Mail::to(adminMailTo())->send(new DepositAdminNotificationMial($data));
 
 
             return redirect()->back()->with('success', 'Deposit submitted successfully. Awaiting confirmation.');

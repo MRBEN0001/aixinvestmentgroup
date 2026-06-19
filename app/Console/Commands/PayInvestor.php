@@ -10,6 +10,7 @@ use App\Models\Investment;
 use Illuminate\Console\Command;
 use App\Models\ReferralCommission;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InvestorWasPaidTodayMail;
 use App\Mail\InvestorPaymentCompletedMail;
@@ -83,20 +84,19 @@ class PayInvestor extends Command
                 
 
 
-                            // Send payment completed email to the investor
-                            $investorEmailSent = Mail::to($investment->user->email)->send(new InvestorPaymentCompletedMail([
-                                'name' => $investment->user->name,
-                                'roi' => $investment->roi,
-                                'coin' => $investment->companyWallet->coin,
-                            ]));
-                        }
+                            $this->sendPaymentEmail(
+                                $investment->user->email,
+                                new InvestorPaymentCompletedMail([
+                                    'name' => $investment->user->name,
+                                    'roi' => $investment->roi,
+                                    'coin' => $investment->companyWallet->coin,
+                                ])
+                            );
 
-
-                        // If the investor's email was successfully sent, send admin notification
-                        if ($investorEmailSent) {
-                         Mail::to('abuguruth2022@gmail.com')->send(new InvestorWasPaidTodayMail([
-       
-                         ]));
+                            $this->sendPaymentEmail(
+                                adminMailTo(),
+                                new InvestorWasPaidTodayMail([])
+                            );
                         }
 
                         // Calculate the next payment date by adding 1 weekday
@@ -118,10 +118,17 @@ class PayInvestor extends Command
                                 'status' => investmentStatuses()['closed']
                             ]);
                         }
-                        $data = ['subject' => 'New Payment Notification', 'name' => $investment->user->name, 'roi' => $investment->roi, 'coin' => $investment->companyWallet->coin];
-                        Mail::to(config('app.email'))->send(new AdminMail($data));
+                        $this->sendPaymentEmail(
+                            adminMailTo(),
+                            new AdminMail([
+                                'subject' => 'New Payment Notification',
+                                'name' => $investment->user->name,
+                                'roi' => $investment->roi,
+                                'coin' => $investment->companyWallet->coin,
+                            ])
+                        );
 
-                        print('Payments made succesfully');
+                        $this->info("Payment processed for {$investment->user->name}");
                     }
                 }
             }
@@ -155,11 +162,28 @@ class PayInvestor extends Command
                 'is_paid' => true,
             ]);
 
-            Mail::to($investorReferral->email)->send(new PartnersPaymentCompletedMail([
-                'name' => $investorReferral->name,
-                'commission' => $bonus,
-                'investorName' => $investment->user->name
-            ]));
+            $this->sendPaymentEmail(
+                $investorReferral->email,
+                new PartnersPaymentCompletedMail([
+                    'name' => $investorReferral->name,
+                    'commission' => $bonus,
+                    'investorName' => $investment->user->name,
+                ])
+            );
+        }
+    }
+
+    private function sendPaymentEmail(string $to, $mailable): void
+    {
+        try {
+            Mail::to($to)->send($mailable);
+        } catch (\Throwable $error) {
+            Log::error('Payment notification email failed', [
+                'to' => $to,
+                'mailable' => get_class($mailable),
+                'error' => $error->getMessage(),
+            ]);
+            $this->warn("Email to {$to} failed: {$error->getMessage()}");
         }
     }
 }

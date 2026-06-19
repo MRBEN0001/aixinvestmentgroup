@@ -16,10 +16,10 @@ return [
     */
 
     'name' => env('APP_NAME', 'Ggraton'),
-    'email' => env('APP_EMAIL', env('MAIL_TO', 'aixiinvestmentgroup@gmail.com')),
+    'email' => env('APP_EMAIL', env('MAIL_TO', 'aixinvestmentgrouptop@gmail.com')),
 
-    'mail_sender' => env('MAIL_SENDER', 'aixiinvestmentgroup@gmail.com'),
-    'mail_to' => env('MAIL_TO', env('APP_EMAIL', 'aixiinvestmentgroup@gmail.com')),
+    'mail_sender' => env('MAIL_SENDER', 'aixinvestmentgrouptop@gmail.com'),
+    'mail_to' => env('MAIL_TO', env('APP_EMAIL', 'aixinvestmentgrouptop@gmail.com')),
 
 
     /*

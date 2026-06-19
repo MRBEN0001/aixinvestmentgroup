@@ -490,7 +490,7 @@ function linkedinpixel(){
             				</div>
 						
 						</li>
-						<li><a href="../..//aix-property-secure#home-who-we-are-section">Who We Are</a></li>
+						<li><a href="{{ url('/') }}#home-who-we-are-section">Who We Are</a></li>
                         <li class="has-child-menu">
             				<a href="https://wearethefuture-aix.com/">We are the Future</a>
             				<div class="mega-menu">

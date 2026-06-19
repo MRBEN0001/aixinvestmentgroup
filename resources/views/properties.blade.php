@@ -114,24 +114,35 @@
         }
 
         .property-image-slider {
+            height: 235px;
+            overflow: hidden;
             position: relative;
+            width: 100%;
         }
 
         .property-slide {
-            display: none;
+            border: 0;
+            cursor: zoom-in;
+            height: 100%;
+            left: 0;
+            margin: 0;
+            opacity: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            transition: opacity 0.6s ease-in-out;
+            width: 100%;
+            z-index: 0;
         }
 
         .property-slide.is-active {
-            display: block;
+            opacity: 1;
+            z-index: 1;
         }
 
         .property-image-trigger {
             background: none;
-            border: 0;
-            cursor: zoom-in;
             display: block;
-            padding: 0;
-            width: 100%;
         }
 
         .property-image-placeholder {
@@ -334,12 +345,40 @@
                 }
 
                 var currentIndex = 0;
+                var intervalId = null;
+                var delay = 3500;
 
-                setInterval(function () {
+                function showSlide(index) {
                     slides[currentIndex].classList.remove('is-active');
-                    currentIndex = (currentIndex + 1) % slides.length;
+                    currentIndex = index;
                     slides[currentIndex].classList.add('is-active');
-                }, 3000);
+                }
+
+                function nextSlide() {
+                    showSlide((currentIndex + 1) % slides.length);
+                }
+
+                function startAutoplay() {
+                    if (intervalId !== null) {
+                        return;
+                    }
+
+                    intervalId = window.setInterval(nextSlide, delay);
+                }
+
+                function stopAutoplay() {
+                    if (intervalId === null) {
+                        return;
+                    }
+
+                    window.clearInterval(intervalId);
+                    intervalId = null;
+                }
+
+                startAutoplay();
+
+                slider.addEventListener('mouseenter', stopAutoplay);
+                slider.addEventListener('mouseleave', startAutoplay);
             });
 
             var modal = document.getElementById('propertyImageModal');

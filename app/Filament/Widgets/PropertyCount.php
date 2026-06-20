@@ -4,14 +4,14 @@ namespace App\Filament\Widgets;
 
 use App\Models\Property;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
-use Filament\Widgets\StatsOverviewWidget\Stat;
+use Filament\Widgets\StatsOverviewWidget\Card;
 
 class PropertyCount extends BaseWidget
 {
-    protected function getStats(): array
+    protected function getCards(): array
     {
         return [
-            Stat::make('Total Properties', Property::query()->count('id')),
+            Card::make('Total Properties', Property::query()->count('id')),
         ];
     }
 }

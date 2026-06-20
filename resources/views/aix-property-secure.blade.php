@@ -490,7 +490,7 @@ function linkedinpixel(){
             				</div>
 						
 						</li>
-						<li><a href="../..//aix-property-secure#home-who-we-are-section">Who We Are</a></li>
+						<li><a href="{{ url('/') }}#home-who-we-are-section">Who We Are</a></li>
                         <li class="has-child-menu">
             				<a href="https://wearethefuture-aix.com/">We are the Future</a>
             				<div class="mega-menu">
@@ -547,8 +547,13 @@ function linkedinpixel(){
                                             <a href="/aix-property-secure">
                                                 AIX Property Secure                                             </a>
                                         </li>
-                                        <li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
+                                        {{-- <li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
                                             <a href="{{ route('cryptocurrencies') }}">
+                                                Cryptocurrencies
+                                            </a>
+                                        </li> --}}
+                                        <li id="investment_product-cryptocurrencies2-menusublink" class="sublinks">
+                                            <a href="{{ route('cryptocurrencies2') }}">
                                                 Cryptocurrencies
                                             </a>
                                         </li>

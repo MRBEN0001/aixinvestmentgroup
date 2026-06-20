@@ -632,8 +632,13 @@ src="https://www.facebook.com/tr?id=234805925624462&amp;ev=PageView&amp;noscript
                                             <a href="{{ route('aix-property-secure') }}">
                                                 AIX Property Secure                                             </a>
                                         </li>
-										<li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
+										{{-- <li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
                                             <a href="{{ route('cryptocurrencies') }}">
+                                                Cryptocurrencies
+                                            </a>
+                                        </li> --}}
+										<li id="investment_product-cryptocurrencies2-menusublink" class="sublinks">
+                                            <a href="{{ route('cryptocurrencies2') }}">
                                                 Cryptocurrencies
                                             </a>
                                         </li>

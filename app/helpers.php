@@ -1,64 +1,92 @@
 <?php
 
-use App\Models\User;
-use App\Models\Account;
-use App\Models\Setting;
-use Illuminate\Support\Str;
+use App\Models\Coin;
+use App\Models\Deposit;
+use App\Models\Investment;
+use App\Models\Withdrawal;
+use App\Enums\DepositStatusEnum;
+use App\Enums\InvestmentStatusEnum;
+use App\Enums\WithdrawalStatusEnum;
 
-if (!function_exists('imagePath')) {
-    function imagePath($image)
+if (!function_exists('adminMailTo')) {
+    function adminMailTo(): string
     {
-        if ($image) {
-            return config('app.url') . '/storage/' . $image;
+        return config('app.mail_to') ?: config('app.email') ?: config('mail.from.address');
+    }
+}
+
+if (!function_exists('generateReferralLink')) {
+    function generateReferralLink($user)
+    {
+        $code = $user->username; // Generate a unique code based on user ID
+        $link = config('app.url') . '/register?ref=' . $code; // Build referral link 
+        $user->referral_link = $code; // Save referral code to user record
+        $user->save();
+        return $link; // Return referral link
+    }
+}
+
+if (!function_exists('getSelectedCoin')) {
+    function getSelectedCoin($id)
+    {
+        return Coin::where('user_id', me()->id)->where('company_wallet_id', $id)->first();
+    }
+}
+
+
+if (!function_exists('hasActiveInvestment')) {
+    function hasActiveInvestment($id)
+    {
+        $response = "No";
+        if (count(Investment::where('user_id', $id)->where('status', investmentStatuses()['active'])->get())) {
+            $response = "Yes";
         }
-        return null;
+        return $response;
+    }
+
+
+    if (!function_exists('me')) {
+        function me()
+        {
+            return auth()->user();
+        }
     }
 }
 
-if (!function_exists('me')) {
-    function me()
+
+
+if (!function_exists('countPendingWithdrawals')) {
+    function countPendingWithdrawals($id)
     {
-        return auth()->user();
+        return count(Withdrawal::where('user_id', $id)->where('status', withdrawalStatuses()['pending'])->get());
     }
-}
 
-//generate random routing  number 
-if (!function_exists('generateUniqueRoutingNumber')) {
-    function generateUniqueRoutingNumber()
-    {
-        do {
-            $routine = str_pad(mt_rand(0, 999999999), 9, '0', STR_PAD_LEFT);
-        } while (Account::where('routine', $routine)->exists());
 
-        return $routine;
+
+    if (!function_exists('withdrawalStatuses')) {
+        function withdrawalStatuses()
+        {
+            return WithdrawalStatusEnum::toSelectArray();
+        }
     }
-}
-
-if (!function_exists('generateUniqueAccountNumber')) {
-    function generateUniqueAccountNumber()
-    {
-        do {
-            $accountNumber = str_pad(random_int(0, 9999999999), 10, '0', STR_PAD_LEFT);
-        } while (Account::where('account_number', $accountNumber)->exists());
-
-        return $accountNumber;
+    if (!function_exists('investmentStatuses')) {
+        function investmentStatuses()
+        {
+            return InvestmentStatusEnum::toSelectArray();
+        }
     }
-}
 
-if (!function_exists('settings')) {
-    function settings()
-    {
-        return Setting::first();
+    if (!function_exists('depositStatuses')) {
+        function depositStatuses()
+        {
+            return DepositStatusEnum::toSelectArray();
+        }
     }
-}
 
-if (!function_exists('generateOtp')) {
-    function generateOtp()
-    {
-        do {
-            $otp = str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
-        } while (User::where('otp', $otp)->exists());
-
-        return $otp;
+    if (!function_exists('lastInvestment')) {
+        function lastInvestment($id)
+        {
+            return Investment::where('user_id', $id)->latest()->first();
+        }
     }
 }

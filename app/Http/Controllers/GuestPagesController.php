@@ -1,68 +1,74 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
+
+use App\Mail\ContactUs;
 
 class GuestPagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function aboutUsIndex()
-    {
-        return view('about-us');
-    }  
-    public function contactUsIndex()
-    {
-        return view('contact-us');
+    public function aboutIndex()
+
+    { 
+        // Returns the "about" Blade view
+        return view('about-us' , ['pageName' => 'About Us']);
+    }
+    
+ 
+    
+    public function planIndex()
+
+    { 
+        // Returns the "plan" Blade view
+
+         // Fetch all plans from the database
+         $plans = Plan::all(); 
+
+         // Pass the plans data to the 'plan' view
+        return view('plan' , ['pageName' => 'Plan'], compact('plans'));
+    } 
+    
+    public function contactIndex()
+
+    { 
+        // Returns the "contact" Blade view
+        return view('contact' , ['pageName' => 'Contact']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function contactFormSubmit()
     {
-        //
-    }
+        // Validate the form inputs
+        $data= request()->validate([
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Email data
+        // $data = [
+        //     'firstname' => $request->firstname,
+        //     'lastname' => $request->lastname,
+        //     'email' => $request->email,
+        //     'subject' => $request->subject,
+        //     'messageContent' => $request->message,
+        // ];
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        // Send the email
+      
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+       
+Mail::to('abuguruth2022@gmail.com')->send(new ContactUs($data));
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+
+   
+    
+}
 }

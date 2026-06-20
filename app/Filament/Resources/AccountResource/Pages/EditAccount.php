@@ -16,4 +16,15 @@ class EditAccount extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['balance'] = $data['balance'] * 100;
+        return $data;
+    }
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['balance'] = $data['balance'] / 100;
+        return $data;
+    }
 }

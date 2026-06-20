@@ -2,21 +2,24 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\User;
-use App\Models\Transaction;
-use Filament\Widgets\StatsOverviewWidget\Stat;
+use App\Models\Investment;
+use App\Models\Withdrawal;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Card;
 
 class StatsOverview extends BaseWidget
 {
-    protected function getStats(): array
+    protected function getCards(): array
     {
         return [
-            Stat::make('Total Users', User::count()),
-
-            Stat::make('Total Withdrawals', Transaction::where('transaction_type', 'withdrawal')->count()),
-
-            Stat::make('Total Transactions', Transaction::count()),
+            Card::make(
+                'No Of Investments This Month',
+                Investment::where('created_at', '>', now()->subDays(30))->count()
+            ),
+            Card::make(
+                'No Of Withdrawals This Month',
+                Withdrawal::where('created_at', '>', now()->subDays(30))->count()
+            )
         ];
     }
 }

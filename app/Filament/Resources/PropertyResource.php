@@ -7,8 +7,8 @@ use App\Models\Property;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables;
 use Illuminate\Support\HtmlString;
 
 class PropertyResource extends Resource
@@ -32,7 +32,6 @@ class PropertyResource extends Resource
                     ->label('Property Images')
                     ->image()
                     ->multiple()
-                    ->reorderable()
                     ->disk('public')
                     ->directory('properties')
                     ->helperText('Upload one or more images for this property.')

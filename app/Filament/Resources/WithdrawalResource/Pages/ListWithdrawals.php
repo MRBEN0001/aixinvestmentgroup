@@ -16,4 +16,15 @@ class ListWithdrawals extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['amount'] = $data['amount'] * 100;
+        return $data;
+    }
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['amount'] = $data['amount'] / 100;
+        return $data;
+    }
 }

@@ -9,10 +9,19 @@ class Kyc extends Model
 {
     use HasFactory;
 
-    // Use guarded to prevent mass-assignment vulnerabilities
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'dob',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'id_type',
+        'id_front',
+        'id_back',
+        'passport_photo',
+    ];
 
-    // Relationship to User
     public function user()
     {
         return $this->belongsTo(User::class);

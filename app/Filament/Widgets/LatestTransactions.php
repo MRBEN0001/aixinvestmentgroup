@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Filament\Widgets;
+
 use App\Models\Transaction;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;

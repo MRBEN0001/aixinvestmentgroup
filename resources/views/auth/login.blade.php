@@ -23,9 +23,9 @@
             <!-- Submit Form Button Starts -->
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">login</button>
-                <p class="text-center">don't have an account ? <a href="/register">register now</a>
-                    <p class="text-center">forgot your password ? <a href="{{ route('password.request') }}">reset now</a>
-                    </div>
+                <p class="text-center">don't have an account ? <a href="/register">register now</a></p>
+                <p class="text-center">forgot your password ? <a href="{{ route('password.request') }}">reset now</a></p>
+            </div>
             <!-- Submit Form Button Ends -->
         </form>
         <!-- Form Ends -->

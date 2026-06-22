@@ -68,7 +68,7 @@
             <!-- Submit Form Button Starts -->
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Create Account</button>
-                <p class="text-center">already have an account ? <a href="{{ route('login')}}">Login</a>
+                <p class="text-center">already have an account ? <a href="{{ route('login')}}">Login</a></p>
             </div>
             <!-- Submit Form Button Ends -->
         </form>

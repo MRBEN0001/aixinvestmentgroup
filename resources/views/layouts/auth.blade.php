@@ -38,7 +38,49 @@ function googleTranslateElementInit() {
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
 
-@include('partials.jivo-chat')
+    @include('partials.jivo-chat')
+
+    <style>
+        html,
+        body.auth-page,
+        body.auth-page .wrapper,
+        body.auth-page .user-auth,
+        body.auth-page .user-auth > div {
+            background: #111 !important;
+            min-height: 100vh;
+        }
+
+        body.auth-page .user-auth > div:nth-child(2) .form-container {
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        body.auth-page .user-auth > div:nth-child(2) .form-container p {
+            color: #fff;
+        }
+
+        body.auth-page .user-auth > div:nth-child(2) .form-container .form-group a {
+            color: #fd961a;
+        }
+
+        body.auth-page .user-auth > div:nth-child(2) .form-container .form-group a:hover,
+        body.auth-page .user-auth > div:nth-child(2) .form-container .form-group a:focus {
+            color: #fd961a;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 767px) {
+            body.auth-page .user-auth > div:nth-child(2) .form-container {
+                min-height: calc(100vh - 30px);
+            }
+        }
+
+        body.auth-page.light .wrapper,
+        body.auth-page.light .user-auth,
+        body.auth-page.light .user-auth > div {
+            background: #111 !important;
+        }
+    </style>
 
 
 </head>

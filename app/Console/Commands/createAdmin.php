@@ -40,13 +40,7 @@ class createAdmin extends Command
                 'email' => $email,
                 'password' => Hash::make('password@aix'),
             ]);
-            Account::create([
-                'user_id' => $user->id,
-                'account_number' => generateUniqueAccountNumber(),
-                'balance' => 0.00,
-                'is_suspended' => false,
-            ]);
-
+            
             echo "Admin created successfully.";
         } else {
             echo "Admin already exists.";

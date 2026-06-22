@@ -68,8 +68,8 @@
     {{-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  --}}
 
-{{-- jivo chat --}}
-{{-- <script src="//code.jivosite.com/widget/GihWyVSN8z" async></script> --}}
+{{-- jivo chat (same widget as guest pages: partials/jivo-chat) --}}
+@include('partials.jivo-chat')
 
 
 </head>
@@ -485,7 +485,7 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card corona-gradient-card">
                                 <div class="card-body py-0 px-0 px-sm-3">
@@ -506,7 +506,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     @yield('content')
                 </div>
                 <!-- content-wrapper ends -->

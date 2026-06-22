@@ -4,7 +4,7 @@
     <div>
         <!-- Section Title Starts -->
         <div class="row text-center">
-            <h2 class="title-head hidden-xs">get <span>started</span></h2>
+            <h2 class="title-head">get <span>started</span></h2>
             {{-- <p class="info-form">Open account for free and start trading Bitcoins now!</p> --}}
         </div>
         <!-- Section Title Ends -->

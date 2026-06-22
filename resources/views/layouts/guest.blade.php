@@ -93,9 +93,8 @@
 
 
 
-{{-- jivo chat --}}
-
-    <script src="//code.jivosite.com/widget/ODNQ4EnuwO" async></script>
+{{-- jivo chat (same widget as guest pages) --}}
+    @include('partials.jivo-chat')
 
 
 

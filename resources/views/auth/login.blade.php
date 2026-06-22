@@ -4,7 +4,7 @@
     <div>
         <!-- Section Title Starts -->
         <div class="row text-center">
-            <h2 class="title-head hidden-xs">member <span>login</span></h2>
+            <h2 class="title-head">member <span>login</span></h2>
         </div>
         <!-- Section Title Ends -->
         <!-- Form Starts -->

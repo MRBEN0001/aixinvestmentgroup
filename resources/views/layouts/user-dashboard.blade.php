@@ -380,7 +380,8 @@ Bootstrap 5 Dashboard Admin Template
         chart.render();
     </script> -->
 
-    {{-- @include('partials.jivo-chat') --}}
+    {{-- jivo chat (same widget as guest pages: partials/jivo-chat) --}}
+    @include('partials.jivo-chat')
 </body>
 
 </html>

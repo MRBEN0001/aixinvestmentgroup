@@ -28,7 +28,7 @@
     <!-- Template JS Files -->
     <script src="{{ asset('js/modernizr.js') }}"></script>
     {{-- google translator --}}
-    <div id="google_translate_element"></div>
+    {{-- <div id="google_translate_element"></div>
 
 <script type="text/javascript">
 function googleTranslateElementInit() {
@@ -36,9 +36,9 @@ function googleTranslateElementInit() {
 }
 </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
 
-<script src="//code.jivosite.com/widget/7feT8xB1OF" async></script>
+@include('partials.jivo-chat')
 
 
 </head>
@@ -161,12 +161,10 @@ function googleTranslateElementInit() {
                 <!-- Slider Ends -->
             </div>
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                <!-- Logo Starts -->
-                <a class="visible-xs" href="{{ '/' }}">
-                    {{-- <img   id="logo" class="img-responsive mobile-logo" src="{{ asset('images/smart-wealth.png') }}" alt="logo"> --}}
-
+                {{-- Mobile logo hidden on login/register --}}
+                {{-- <a class="visible-xs" href="{{ '/' }}">
                     <img id="logo" class="img-responsive mobile-logo" src="{{ asset('images/smart-wealth.png') }}" alt="logo" style="width: 130px;">
-                </a>
+                </a> --}}
                 @yield('content')
                 <!-- Copyright Text Starts -->
                 <!-- Copyright Text Ends -->

@@ -28,7 +28,7 @@ class DashboardController extends Controller
     public function plans()
     {
         return view('user.dashboard.plans', [
-            'plans' => Plan::orderBy('min')->get(),
+            'plans' => Plan::orderBy('id')->get(),
         ]);
     }
 }

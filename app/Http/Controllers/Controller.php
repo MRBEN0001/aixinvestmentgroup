@@ -22,7 +22,7 @@ class Controller extends BaseController
 
     protected function getInvestmentPlans()
     {
-        return Plan::all();
+        return Plan::orderBy('id')->get();
     }
 
     protected function getUserAccount()

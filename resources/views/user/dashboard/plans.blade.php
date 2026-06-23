@@ -60,7 +60,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title mb-3">Investment Plans</h4>
-                <p class="plans-caption mb-4">All plans are 6 days</p>
+                <p class="plans-caption mb-4">All plans are 6 working days</p>
 
                 @if ($plans->isEmpty())
                     <p class="text-muted mb-0">No plans are available right now. Please contact support.</p>

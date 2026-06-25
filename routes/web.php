@@ -2,16 +2,16 @@
 
 use App\Models\Plan;
 use App\Models\Property;
-use Illuminate\Support\Facades\Schema;
 use App\Mail\WelcomeMail;
 use App\Mail\AdminToUserMail;
 use App\Mail\newReferralMail;
 use App\Mail\WithdrawalRequestMail;
 use App\Mail\WithdrawalApproaveMail;
-
 use Illuminate\Support\Facades\Mail;
+
 use App\Mail\InvestmentActivatedMail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureHasAccount;
@@ -203,15 +203,15 @@ Route::get('/contact', [GuestPagesController::class, 'contactIndex'])
 Route::post('/contact-submit', [GuestPagesController::class, 'contactFormSubmit'])->name('contact.submit');
 
 
-Route::get('/send-debug-mail', function () {
-    $to = "anenebenjaminjnr@gmail.com";
-    $subject = "Debug Notice";
-    $message = "Aix e-mail debugging is ongoing";
+// Route::get('/send-debug-mail', function () {
+//     $to = "anenebenjaminjnr@gmail.com";
+//     $subject = "Debug Notice";
+//     $message = "Aix e-mail debugging is ongoing";
 
-    Mail::raw($message, function ($mail) use ($to, $subject) {
-        $mail->to($to)->subject($subject);
-    });
+//     Mail::raw($message, function ($mail) use ($to, $subject) {
+//         $mail->to($to)->subject($subject);
+//     });
 
-    return "Mail sent to $to with message: $message";
-}); 
+//     return "Mail sent to $to with message: $message";
+// }); 
 require __DIR__ . '/auth.php';

@@ -2,6 +2,7 @@
 
 use App\Models\Plan;
 use App\Models\Property;
+use App\Models\TeslaProduct;
 use App\Mail\WelcomeMail;
 use App\Mail\AdminToUserMail;
 use App\Mail\newReferralMail;
@@ -172,6 +173,22 @@ Route::get('/properties/{property}/payment', function (Property $property) {
 Route::get('/properties/{property}', function (Property $property) {
     return view('property-details', compact('property'));
 })->name('properties.show');
+
+Route::get('/tesla', function () {
+    $teslaProducts = Schema::hasTable('tesla_products')
+        ? TeslaProduct::query()->latest()->get()
+        : collect();
+
+    return view('tesla-products', compact('teslaProducts'));
+})->name('tesla');
+
+Route::get('/tesla/{teslaProduct}/payment', function (TeslaProduct $teslaProduct) {
+    return view('tesla-product-payment', compact('teslaProduct'));
+})->name('tesla.payment');
+
+Route::get('/tesla/{teslaProduct}', function (TeslaProduct $teslaProduct) {
+    return view('tesla-product-details', compact('teslaProduct'));
+})->name('tesla.show');
 
 Route::get('/cryptocurrencies', function () {
     return view('cryptocurrencies');

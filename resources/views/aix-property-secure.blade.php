@@ -547,6 +547,11 @@ function linkedinpixel(){
                                             <a href="/aix-property-secure">
                                                 AIX Property Secure                                             </a>
                                         </li>
+                                        <li id="investment_product-tesla-menusublink" class="sublinks">
+                                            <a href="{{ route('tesla') }}">
+                                                Tesla
+                                            </a>
+                                        </li>
                                         {{-- <li id="investment_product-cryptocurrencies-menusublink" class="sublinks">
                                             <a href="{{ route('cryptocurrencies') }}">
                                                 Cryptocurrencies

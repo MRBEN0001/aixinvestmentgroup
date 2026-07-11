@@ -241,6 +241,19 @@ Bootstrap 5 Dashboard Admin Template
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('deposit') }}">
+                                <i class="bi-plus-circle me-2"></i>
+                                Deposit
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('aix.exchange') }}">
+                                <i class="bi-currency-exchange me-2"></i>
+                                Aix Exchange
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="/kyc">
@@ -290,6 +303,7 @@ Bootstrap 5 Dashboard Admin Template
                 </div>
             </nav>
 
+            @yield('content')
 
         </div>
     </div>
@@ -385,4 +399,3 @@ Bootstrap 5 Dashboard Admin Template
 </body>
 
 </html>
-@yield('content')

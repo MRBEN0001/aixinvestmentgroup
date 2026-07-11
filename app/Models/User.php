@@ -28,6 +28,7 @@ class User extends Authenticatable
         'account_disabled',
         'is_investing_suspended',
         'password',
+        'trade_password',
         'ip_address',
         'is_admin'
     ];
@@ -39,6 +40,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'trade_password',
         'remember_token',
     ];
 
@@ -54,6 +56,11 @@ class User extends Authenticatable
     public function canAccessFilament(): bool
     {
         return str_ends_with($this->email, 'admin@ggraton.com');
+    }
+
+    public function hasTradePassword(): bool
+    {
+        return filled($this->trade_password);
     }
 
     public function investments(): HasMany

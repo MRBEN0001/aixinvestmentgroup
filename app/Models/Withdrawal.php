@@ -14,8 +14,12 @@ class Withdrawal extends Model
         'user_id',
         'investment_id',
         'company_wallet_id',
+        'transaction_id',
         'amount',
+        'usd_value',
+        'wallet_address',
         'status',
+        'source',
     ];
 
     public function user(): BelongsTo
@@ -31,5 +35,15 @@ class Withdrawal extends Model
     public function companyWallet(): BelongsTo
     {
         return $this->belongsTo(CompanyWallet::class);
+    }
+
+    public function transaction(): BelongsTo
+    {
+        return $this->belongsTo(Transaction::class);
+    }
+
+    public function scopeExchange($query)
+    {
+        return $query->where('source', 'exchange');
     }
 }

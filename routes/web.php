@@ -24,7 +24,13 @@ use App\Http\Controllers\ProfileController;
 
 
 use App\Mail\NewInvestmentNotificationMail;
+use App\Http\Controllers\DepositController;
+use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\GuestPagesController;
+use App\Http\Controllers\ProfileSettingsNotificationController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Middleware\EnsureAccountIsEnabled;
 use App\Http\Middleware\EnsureDepositCompleted;
 use App\Http\Middleware\EnsureEligibleToInvest;
@@ -123,6 +129,33 @@ Route::middleware('auth')->group(function () {
 
     // Admin KYC view temporarily disabled — uncomment to restore
     // Route::get('/admin/view/kycs', [ProfileController::class, 'adminViewKycIndex'])->name('admin.kycs');
+
+    Route::get('/deposit', [DepositController::class, 'index'])->name('deposit');
+    Route::get('/deposit/crypto', [DepositController::class, 'crypto'])->name('deposit.crypto');
+    Route::get('/deposit/transaction-hash', [DepositController::class, 'transactionHashIndex'])->name('deposit.transaction-hash');
+    Route::post('/deposit/transaction-hash', [DepositController::class, 'transactionHashProcess'])->name('transaction.hash.process');
+    Route::get('/transactions', [TransactionController::class, 'transactionIndex'])->name('transactions');
+    Route::get('/exchange', [ExchangeController::class, 'index'])->name('aix.exchange');
+    Route::post('/exchange/trade', [ExchangeController::class, 'trade'])->name('aix.exchange.trade');
+    Route::get('/exchange/trade-password', [ExchangeController::class, 'tradePasswordForm'])->name('aix.exchange.trade-password');
+    Route::post('/exchange/trade-password', [ExchangeController::class, 'saveTradePassword'])->name('aix.exchange.trade-password.save');
+    Route::get('/exchange/transactions', [ExchangeController::class, 'transactions'])->name('aix.exchange.transactions');
+    Route::get('/exchange/assets', [ExchangeController::class, 'myAssets'])->name('aix.exchange.assets');
+    Route::get('/exchange/withdrawal', [ExchangeController::class, 'withdrawal'])->name('aix.exchange.withdrawal');
+    Route::post('/exchange/withdrawal', [ExchangeController::class, 'processWithdrawal'])->name('aix.exchange.withdrawal.process');
+    Route::get('/exchange/deposit', [ExchangeController::class, 'deposit'])->name('aix.exchange.deposit');
+    Route::get('/exchange/deposit/transaction-hash', [ExchangeController::class, 'depositTransactionHash'])->name('aix.exchange.deposit.transaction-hash');
+    Route::post('/exchange/deposit/transaction-hash', [ExchangeController::class, 'depositTransactionHashProcess'])->name('aix.exchange.deposit.transaction-hash.process');
+    Route::get('/exchange/deposit/{symbol}', [ExchangeController::class, 'depositCoin'])->name('aix.exchange.deposit.coin');
+    Route::get('/exchange/coin/{symbol}', [ExchangeController::class, 'show'])->name('aix.exchange.coin');
+    Route::get('/transfer', [TransferController::class, 'transferFormIndex'])->name('transfer.form');
+    Route::post('/transfer', [TransferController::class, 'processTransfer'])->name('transfer.process');
+    Route::post('/transfer/validate', [TransferController::class, 'ajaxValidate'])->name('transfer.jax.validate');
+    Route::get('/withdrawal', fn () => view('user-dashboard-pages.withdrawal-form'))->name('withdrawal.index');
+    Route::get('/settings', [UserDashboardController::class, 'settings'])->name('settings');
+    Route::get('/wallet', [UserDashboardController::class, 'wallet'])->name('wallet');
+    Route::get('/user/profile', [UserDashboardController::class, 'userProfile'])->name('user_profile');
+    Route::post('/profile/notifications', [ProfileSettingsNotificationController::class, 'update'])->name('profile.notifications.update');
 
 });
 

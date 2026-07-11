@@ -8,10 +8,46 @@ use App\Enums\DepositStatusEnum;
 use App\Enums\InvestmentStatusEnum;
 use App\Enums\WithdrawalStatusEnum;
 
+if (!function_exists('exchangeMailFrom')) {
+    function exchangeMailFrom(): string
+    {
+        return config('exchange.mail.from.address', 'noreply@aixexchange.top');
+    }
+}
+
 if (!function_exists('adminMailTo')) {
     function adminMailTo(): string
     {
         return config('app.mail_to') ?: config('app.email') ?: config('mail.from.address');
+    }
+}
+
+if (!function_exists('aixcoinPrice')) {
+    function aixcoinPrice(): float
+    {
+        return app(\App\Services\AixcoinPriceService::class)->current();
+    }
+}
+
+if (!function_exists('formatCompactNumber')) {
+    function formatCompactNumber($number): string
+    {
+        $number = (float) $number;
+
+        if ($number >= 1_000_000_000_000) {
+            return number_format($number / 1_000_000_000_000, 2) . 'T';
+        }
+        if ($number >= 1_000_000_000) {
+            return number_format($number / 1_000_000_000, 2) . 'B';
+        }
+        if ($number >= 1_000_000) {
+            return number_format($number / 1_000_000, 2) . 'M';
+        }
+        if ($number >= 1_000) {
+            return number_format($number / 1_000, 2) . 'K';
+        }
+
+        return number_format($number, 2);
     }
 }
 

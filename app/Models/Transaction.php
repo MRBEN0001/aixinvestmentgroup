@@ -16,8 +16,14 @@ class Transaction extends Model
         'amount',
         'description',
         'status',
-        'created_at'
+        'source',
+        'created_at',
     ];
+
+    public function scopeExchange($query)
+    {
+        return $query->where('source', 'exchange');
+    }
 
     public function user()
     {

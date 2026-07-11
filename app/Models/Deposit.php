@@ -17,9 +17,24 @@ class Deposit extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function transaction(): BelongsTo
+    {
+        return $this->belongsTo(Transaction::class);
+    }
+
     public function companyWallet(): BelongsTo
     {
         return $this->belongsTo(CompanyWallet::class);
+    }
+
+    public function scopeExchange($query)
+    {
+        return $query->where('source', 'exchange');
+    }
+
+    public function scopeInvestment($query)
+    {
+        return $query->where('source', 'investment');
     }
     
 }
